@@ -47,7 +47,9 @@ export class Lemonsqueezy {
   /**
    * Get User
    *
-   * @description Retrieves the currently authenticated user.
+   * @description Retrieves the currently authenticated user
+   *
+   * @docs https://docs.lemonsqueezy.com/api/users#retrieve-the-authenticated-user
    *
    * @param {Object} [options]
    *
@@ -64,6 +66,8 @@ export class Lemonsqueezy {
    * Retrieve store
    *
    * @description Retrieves the store with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/stores#retrieve-a-store
    *
    * @param {String} options.id - The ID of the store to retrieve
    *
@@ -83,6 +87,8 @@ export class Lemonsqueezy {
    *
    * @description Returns a paginated list of stores
    *
+   * @docs https://docs.lemonsqueezy.com/api/stores#list-all-stores
+   *
    * @param {Object} [options]
    *
    * @returns Returns a paginated list of `store` objects ordered by name
@@ -98,6 +104,8 @@ export class Lemonsqueezy {
    * Retrieve product
    *
    * @description Retrieves the product with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/products#retrieve-a-product
    *
    * @param {String} options.id - The ID of the product to retrieve
    *
@@ -116,6 +124,8 @@ export class Lemonsqueezy {
    * List all products
    *
    * @description Returns a paginated list of products
+   *
+   * @docs https://docs.lemonsqueezy.com/api/products#list-all-products
    *
    * @param {Object} [options]
    *
@@ -138,6 +148,8 @@ export class Lemonsqueezy {
    *
    * @description Retrieves the variant with the given ID
    *
+   * @docs https://docs.lemonsqueezy.com/api/variants#retrieve-a-variant
+   *
    * @param {String} options.id - The ID of the variant to retrieve
    *
    * @returns A variant object
@@ -155,6 +167,8 @@ export class Lemonsqueezy {
    * List all variants
    *
    * @description Returns a paginated list of variants
+   *
+   * @docs https://docs.lemonsqueezy.com/api/variants#list-all-variants
    *
    * @param {Object} [options]
    *
@@ -177,6 +191,8 @@ export class Lemonsqueezy {
    *
    * @description Retrieves the file with the given ID
    *
+   * @docs https://docs.lemonsqueezy.com/api/files#retrieve-a-file
+   *
    * @param {String} options.id - The ID of the file to retrieve
    *
    * @returns A file object
@@ -194,6 +210,8 @@ export class Lemonsqueezy {
    * List all files
    *
    * @description Returns a paginated list of files
+   *
+   * @docs https://docs.lemonsqueezy.com/api/files#list-all-files
    *
    * @param {Object} [options]
    *
@@ -216,6 +234,8 @@ export class Lemonsqueezy {
    *
    * @description Retrieves the order with the given ID
    *
+   * @docs https://docs.lemonsqueezy.com/api/orders#retrieve-an-order
+   *
    * @param {String} options.id - The ID of the order to retrieve
    *
    * @returns A order object
@@ -233,6 +253,8 @@ export class Lemonsqueezy {
    * List all orders
    *
    * @description Returns a paginated list of orders
+   *
+   * @docs https://docs.lemonsqueezy.com/api/orders#list-all-orders
    *
    * @param {Object} [options]
    *
@@ -256,6 +278,8 @@ export class Lemonsqueezy {
    *
    * @description Retrieves the order item with the given ID
    *
+   * @docs https://docs.lemonsqueezy.com/api/order-items#retrieve-an-order-item
+   *
    * @param {String} options.id - The ID of the order item to retrieve
    *
    * @returns A order item object
@@ -273,6 +297,8 @@ export class Lemonsqueezy {
    * List all order items
    *
    * @description Returns a paginated list of order items
+   *
+   * @docs https://docs.lemonsqueezy.com/api/order-items#list-all-order-items
    *
    * @param {Object} [options]
    *
@@ -297,6 +323,8 @@ export class Lemonsqueezy {
    *
    * @description Retrieves the subscription with the given ID
    *
+   * @docs https://docs.lemonsqueezy.com/api/subscriptions#retrieve-a-subscription
+   *
    * @param {String} options.id - The ID of the subscription to retrieve
    *
    * @returns A subscription object
@@ -314,6 +342,8 @@ export class Lemonsqueezy {
    * List all order items
    *
    * @description Returns a paginated list of order items
+   *
+   * @docs https://docs.lemonsqueezy.com/api/subscriptions#list-all-subscriptions
    *
    * @param {Object} [options]
    *

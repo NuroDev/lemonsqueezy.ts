@@ -5,6 +5,9 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
+/**
+ * @docs https://docs.lemonsqueezy.com/api/subscriptions#the-subscription-object
+ */
 export interface LemonsqueezySubscription {
   attributes: {
     /**
@@ -112,7 +115,7 @@ export interface LemonsqueezySubscription {
        *
        * The URL is valid for 24 hours from time of request
        *
-       * @see https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs
+       * @docs https://docs.lemonsqueezy.com/help/lemonjs/what-is-lemonjs
        */
       update_payment_method: string;
     };
@@ -170,3 +173,5 @@ export interface RetrieveSubscriptionOptions extends SharedLemonsqueezyOptions {
 
 export type RetrieveSubscriptionResult =
   BaseLemonsqueezyResponse<LemonsqueezySubscription>;
+
+export interface UpdateSubscriptionOptions extends SharedLemonsqueezyOptions {}

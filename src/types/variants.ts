@@ -7,6 +7,9 @@ import type {
 
 export type LemonsqueezyInterval = "day" | "week" | "month" | "year";
 
+/**
+ * @docs https://docs.lemonsqueezy.com/api/variants#the-variant-object
+ */
 export interface LemonsqueezyVariant {
   attributes: {
     /**

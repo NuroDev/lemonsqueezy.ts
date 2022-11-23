@@ -4,6 +4,9 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
+/**
+ * @docs https://docs.lemonsqueezy.com/api/users#the-user-object
+ */
 export interface LemonsqueezyUser {
   attributes: {
     /**

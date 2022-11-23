@@ -5,6 +5,9 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
+/**
+ * @docs https://docs.lemonsqueezy.com/api/stores#the-store-object
+ */
 export interface LemonsqueezyStore {
   attributes: {
     /**

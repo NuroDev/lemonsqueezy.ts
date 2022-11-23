@@ -15,6 +15,16 @@ describe("Client", () => {
     });
   });
 
+  describe("Order", () => {
+    it("Retrieve order", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all orders", async () => {
+      expect(true).toEqual(true);
+    });
+  });
+
   describe("Product", () => {
     it("Retrieve product", async () => {
       expect(true).toEqual(true);

@@ -7,6 +7,8 @@ import type {
   LemonsqueezyOptions,
   ListAllFilesOptions,
   ListAllFilesResult,
+  ListAllOrdersOptions,
+  ListAllOrdersResult,
   ListAllProductsOptions,
   ListAllProductsResult,
   ListAllStoresOptions,
@@ -15,6 +17,8 @@ import type {
   ListAllVariantsResult,
   RetrieveFileOptions,
   RetrieveFileResult,
+  RetrieveOrderOptions,
+  RetrieveOrderResult,
   RetrieveProductOptions,
   RetrieveProductResult,
   RetrieveStoreOptions,
@@ -199,6 +203,57 @@ export class Lemonsqueezy {
           }
         : undefined,
       path: "/files",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve order
+   *
+   * @description Retrieves the order with the given ID
+   *
+   * @param {String} options.id - The ID of the order to retrieve
+   *
+   * @returns A order object
+   */
+  public async retrieveOrder(options: RetrieveOrderOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveOrderResult>({
+      path: `/orders/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all orders
+   *
+   * @description Returns a paginated list of orders
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of file objects ordered by `sort`
+   */
+  public async listAllOrders(options: ListAllOrdersOptions = {}) {
+    const { storeId, userEmail, ...rest } = options;
+
+    return this._request<ListAllOrdersResult>({
+      data:
+        storeId && userEmail
+          ? {
+              ...(storeId
+                ? {
+                    store_id: storeId,
+                  }
+                : {}),
+              ...(userEmail
+                ? {
+                    user_email: userEmail,
+                  }
+                : {}),
+            }
+          : undefined,
+      path: "/orders",
       ...rest,
     });
   }

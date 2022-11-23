@@ -7,6 +7,14 @@ export type {
 } from "./file";
 
 export type {
+  LemonsqueezyOrder,
+  ListAllOrdersOptions,
+  ListAllOrdersResult,
+  RetrieveOrderOptions,
+  RetrieveOrderResult,
+} from "./order";
+
+export type {
   LemonsqueezyProduct,
   ListAllProductsOptions,
   ListAllProductsResult,

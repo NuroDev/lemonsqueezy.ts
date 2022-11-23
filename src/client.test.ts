@@ -29,9 +29,8 @@ describe("Client", () => {
       const checkouts = await client.listAllCheckouts();
 
       expect(checkouts).toBeDefined();
-      expect(Array.isArray(checkouts)).toBe(true);
-      expect(checkouts.errors).not.toBeDefined();
-      expect(checkouts.errors?.length).toBe(0);
+      expect(Array.isArray(checkouts.data)).toBe(true);
+      expect(checkouts.errors).toBeUndefined();
     });
   });
 
@@ -44,9 +43,8 @@ describe("Client", () => {
       const discounts = await client.listAllDiscounts();
 
       expect(discounts).toBeDefined();
-      expect(Array.isArray(discounts)).toBe(true);
-      expect(discounts.errors).not.toBeDefined();
-      expect(discounts.errors?.length).toBe(0);
+      expect(Array.isArray(discounts.data)).toBe(true);
+      expect(discounts.errors).toBeUndefined();
     });
   });
 
@@ -59,9 +57,8 @@ describe("Client", () => {
       const files = await client.listAllFiles();
 
       expect(files).toBeDefined();
-      expect(Array.isArray(files)).toBe(true);
-      expect(files.errors).not.toBeDefined();
-      expect(files.errors?.length).toBe(0);
+      expect(Array.isArray(files.data)).toBe(true);
+      expect(files.errors).toBeUndefined();
     });
   });
 
@@ -74,9 +71,8 @@ describe("Client", () => {
       const licenseKeys = await client.listAllLicenseKeys();
 
       expect(licenseKeys).toBeDefined();
-      expect(Array.isArray(licenseKeys)).toBe(true);
-      expect(licenseKeys.errors).not.toBeDefined();
-      expect(licenseKeys.errors?.length).toBe(0);
+      expect(Array.isArray(licenseKeys.data)).toBe(true);
+      expect(licenseKeys.errors).toBeUndefined();
     });
   });
 
@@ -89,9 +85,8 @@ describe("Client", () => {
       const licenseKeyinstances = await client.listAllLicenseKeyInstances();
 
       expect(licenseKeyinstances).toBeDefined();
-      expect(Array.isArray(licenseKeyinstances)).toBe(true);
-      expect(licenseKeyinstances.errors).not.toBeDefined();
-      expect(licenseKeyinstances.errors?.length).toBe(0);
+      expect(Array.isArray(licenseKeyinstances.data)).toBe(true);
+      expect(licenseKeyinstances.errors).toBeUndefined();
     });
   });
 
@@ -104,9 +99,8 @@ describe("Client", () => {
       const orders = await client.listAllOrders();
 
       expect(orders).toBeDefined();
-      expect(Array.isArray(orders)).toBe(true);
-      expect(orders.errors).not.toBeDefined();
-      expect(orders.errors?.length).toBe(0);
+      expect(Array.isArray(orders.data)).toBe(true);
+      expect(orders.errors).toBeUndefined();
     });
   });
 
@@ -119,9 +113,8 @@ describe("Client", () => {
       const orderItems = await client.listAllOrderItems();
 
       expect(orderItems).toBeDefined();
-      expect(Array.isArray(orderItems)).toBe(true);
-      expect(orderItems.errors).not.toBeDefined();
-      expect(orderItems.errors?.length).toBe(0);
+      expect(Array.isArray(orderItems.data)).toBe(true);
+      expect(orderItems.errors).toBeUndefined();
     });
   });
 
@@ -134,9 +127,8 @@ describe("Client", () => {
       const products = await client.listAllProducts();
 
       expect(products).toBeDefined();
-      expect(Array.isArray(products)).toBe(true);
-      expect(products.errors).not.toBeDefined();
-      expect(products.errors?.length).toBe(0);
+      expect(Array.isArray(products.data)).toBe(true);
+      expect(products.errors).toBeUndefined();
     });
   });
 
@@ -149,9 +141,8 @@ describe("Client", () => {
       const stores = await client.listAllStores();
 
       expect(stores).toBeDefined();
-      expect(Array.isArray(stores)).toBe(true);
-      expect(stores.errors).not.toBeDefined();
-      expect(stores.errors?.length).toBe(0);
+      expect(Array.isArray(stores.data)).toBe(true);
+      expect(stores.errors).toBeUndefined();
     });
   });
 
@@ -168,9 +159,8 @@ describe("Client", () => {
       const subscriptions = await client.listAllSubscriptions();
 
       expect(subscriptions).toBeDefined();
-      expect(Array.isArray(subscriptions)).toBe(true);
-      expect(subscriptions.errors).not.toBeDefined();
-      expect(subscriptions.errors?.length).toBe(0);
+      expect(Array.isArray(subscriptions.data)).toBe(true);
+      expect(subscriptions.errors).toBeUndefined();
     });
   });
 
@@ -189,9 +179,8 @@ describe("Client", () => {
       const variants = await client.listAllVariants();
 
       expect(variants).toBeDefined();
-      expect(Array.isArray(variants)).toBe(true);
-      expect(variants.errors).not.toBeDefined();
-      expect(variants.errors?.length).toBe(0);
+      expect(Array.isArray(variants.data)).toBe(true);
+      expect(variants.errors).toBeUndefined();
     });
   });
 });

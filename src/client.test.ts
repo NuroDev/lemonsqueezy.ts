@@ -35,6 +35,21 @@ describe("Client", () => {
     });
   });
 
+  describe("License key", () => {
+    it("Retrieve license key", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all license keys", async () => {
+      const licenseKeys = await client.listAllLicenseKeys();
+
+      expect(licenseKeys).toBeDefined();
+      expect(Array.isArray(licenseKeys)).toBe(true);
+      expect(licenseKeys.errors).not.toBeDefined();
+      expect(licenseKeys.errors?.length).toBe(0);
+    });
+  });
+
   describe("Order", () => {
     it("Retrieve order", async () => {
       expect(true).toEqual(true);

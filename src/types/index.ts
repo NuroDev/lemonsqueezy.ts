@@ -15,6 +15,14 @@ export type {
 } from "./file";
 
 export type {
+  LemonsqueezyLicenseKey,
+  ListAllLicenseKeysOptions,
+  ListAllLicenseKeysResult,
+  RetrieveLicenseKeyOptions,
+  RetrieveLicenseKeyResult,
+} from "./licenseKey";
+
+export type {
   LemonsqueezyOrder,
   ListAllOrdersOptions,
   ListAllOrdersResult,

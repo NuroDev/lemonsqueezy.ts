@@ -26,6 +26,7 @@ export interface LemonsqueezyOptions
 export enum LemonsqueezyDataType {
   DISCOUNTS = "discounts",
   FILES = "files",
+  LICENSE_KEYS = "license-keys",
   ORDER_ITEMS = "order-items",
   ORDERS = "orders",
   PRODUCTS = "products",

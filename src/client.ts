@@ -5,8 +5,12 @@ import {
   LemonsqueezyDataType,
   ListAllDiscountsOptions,
   ListAllDiscountsResult,
+  ListAllLicenseKeysOptions,
+  ListAllLicenseKeysResult,
   RetrieveDiscountOptions,
   RetrieveDiscountResult,
+  RetrieveLicenseKeyOptions,
+  RetrieveLicenseKeyResult,
   UpdateSubscriptionResult,
 } from "./types";
 
@@ -474,6 +478,52 @@ export class Lemonsqueezy {
         ...(storeId ? { store_id: storeId } : {}),
       },
       path: "/discounts",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve license key
+   *
+   * @description Retrieves the license key with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/license-keys#retrieve-a-license-key
+   *
+   * @param {String} options.id - The ID of the license key to retrieve
+   *
+   * @returns A license key object
+   */
+  public async retrieveLicenseKey(options: RetrieveLicenseKeyOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveLicenseKeyResult>({
+      path: `/license-keys/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all license keys
+   *
+   * @description Returns a paginated list of license keys
+   *
+   * @docs https://docs.lemonsqueezy.com/api/license-keys#list-all-license-keys
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of license key objects ordered by `id`
+   */
+  public async listAllLicenseKeys(options: ListAllLicenseKeysOptions = {}) {
+    const { orderId, orderItemId, productId, storeId, ...rest } = options;
+
+    return this._request<ListAllLicenseKeysResult>({
+      params: {
+        ...(orderId ? { order_id: orderId } : {}),
+        ...(orderItemId ? { order_item_id: orderItemId } : {}),
+        ...(productId ? { product_id: productId } : {}),
+        ...(storeId ? { store_id: storeId } : {}),
+      },
+      path: "/license-keys",
       ...rest,
     });
   }

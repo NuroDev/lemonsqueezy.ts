@@ -1,19 +1,17 @@
 import fetch from "node-fetch";
 import { join } from "node:path";
 
-import {
-  LemonsqueezyDataType,
-  ListAllCheckoutsOptions,
-  ListAllCheckoutsResult,
-  RetrieveCheckoutOptions,
-  RetrieveCheckoutResult,
-} from "./types";
+import { LemonsqueezyDataType } from "./types";
 
 import type {
   BaseLemonsqueezyResponse,
+  CreateCheckoutOptions,
+  CreateCheckoutResult,
   GetUserOptions,
   GetUserResult,
   LemonsqueezyOptions,
+  ListAllCheckoutsOptions,
+  ListAllCheckoutsResult,
   ListAllDiscountsOptions,
   ListAllDiscountsResult,
   ListAllFilesOptions,
@@ -35,6 +33,8 @@ import type {
   ListAllVariantsOptions,
   ListAllVariantsResult,
   PaginatedBaseLemonsqueezyResponse,
+  RetrieveCheckoutOptions,
+  RetrieveCheckoutResult,
   RetrieveDiscountOptions,
   RetrieveDiscountResult,
   RetrieveFileOptions,
@@ -623,6 +623,39 @@ export class Lemonsqueezy {
         ...(variantId ? { variant_id: variantId } : {}),
       },
       path: "/checkouts",
+      ...rest,
+    });
+  }
+
+  /**
+   * Create checkout
+   *
+   * @description Create a custom checkout. Use this endpoint to create a unique checkout URL for a specific variant
+   *
+   * @docs https://docs.lemonsqueezy.com/api/checkouts#create-a-checkout
+   *
+   * @returns A checkout object
+   */
+  public async createCheckout(options: CreateCheckoutOptions) {
+    const {
+      checkout_data,
+      checkout_options,
+      custom_price,
+      expires_at,
+      product_options,
+      ...rest
+    } = options;
+
+    return this._request<CreateCheckoutResult>({
+      data: {
+        ...(checkout_data ? { checkout_data } : {}),
+        ...(checkout_options ? { checkout_options } : {}),
+        ...(custom_price ? { custom_price } : {}),
+        ...(expires_at ? { expires_at } : {}),
+        ...(product_options ? { product_options } : {}),
+      },
+      path: "/checkouts",
+      method: "POST",
       ...rest,
     });
   }

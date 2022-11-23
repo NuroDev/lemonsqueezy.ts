@@ -6,11 +6,15 @@ describe("Client", () => {
   const client = new Lemonsqueezy("ABC123");
 
   describe("Checkout", () => {
-    it("Retrieve checkiut", async () => {
+    it("Create checkout", async () => {
       expect(true).toEqual(true);
     });
 
-    it("List all discount", async () => {
+    it("Retrieve checkout", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all checkouts", async () => {
       const checkouts = await client.listAllCheckouts();
 
       expect(checkouts).toBeDefined();

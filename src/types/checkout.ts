@@ -179,6 +179,22 @@ export interface LemonsqueezyCheckout {
   id: string;
 }
 
+export interface CreateCheckoutOptions
+  extends SharedLemonsqueezyOptions,
+    Partial<
+      Pick<
+        LemonsqueezyCheckout["attributes"],
+        | "custom_price"
+        | "product_options"
+        | "checkout_options"
+        | "checkout_data"
+        | "expires_at"
+      >
+    > {}
+
+export type CreateCheckoutResult =
+  BaseLemonsqueezyResponse<LemonsqueezyCheckout>;
+
 export interface ListAllCheckoutsOptions extends SharedLemonsqueezyOptions {
   /**
    * Only return checkouts belonging to the store with this ID

@@ -51,7 +51,7 @@ import { Lemonsqueezy } from "lemonsqueezy.ts";
 const client = new Lemonsqueezy("YOUR_API_KEY");
 ```
 
-### Checkout
+#### 🛒 Checkout
 
 ```typescript
 const newCheckout = await client.createCheckout({
@@ -65,7 +65,7 @@ const checkout = await client.retrieveCheckout({
 const checkouts = await client.listAllCheckouts();
 ```
 
-### Discount
+#### 🔖 Discount
 
 ```typescript
 const discount = await client.retrieveDiscount({
@@ -75,7 +75,7 @@ const discount = await client.retrieveDiscount({
 const discounts = await client.listAllDiscounts();
 ```
 
-### File
+#### 📄 File
 
 ```typescript
 const file = await client.retrieveFile({
@@ -85,7 +85,7 @@ const file = await client.retrieveFile({
 const files = await client.listAllFiles();
 ```
 
-### License key
+#### 🔑 License key
 
 ```typescript
 const licenseKey = await client.retrieveLicenseKey({
@@ -95,7 +95,7 @@ const licenseKey = await client.retrieveLicenseKey({
 const licenseKeys = await client.listAllLicenseKeys();
 ```
 
-### License key instance
+#### 🥇 License key instance
 
 ```typescript
 const licenseKeyInstance = await client.retrieveLicenseKeyInstance({
@@ -105,7 +105,7 @@ const licenseKeyInstance = await client.retrieveLicenseKeyInstance({
 const licenseKeyInstances = await client.listAllLicenseKeyInstances();
 ```
 
-### Order
+#### 🧾 Order
 
 ```typescript
 const order = await client.retrieveOrder({
@@ -115,7 +115,7 @@ const order = await client.retrieveOrder({
 const orders = await client.listAllOrders();
 ```
 
-### Order Item
+#### 📦 Order Item
 
 ```typescript
 const orderItem = await client.retrieveOrderItem({
@@ -125,7 +125,7 @@ const orderItem = await client.retrieveOrderItem({
 const orderItems = await client.listAllOrderItems();
 ```
 
-### Product
+#### 💎 Product
 
 ```typescript
 const product = await client.retrieveProduct({
@@ -135,7 +135,7 @@ const product = await client.retrieveProduct({
 const products = await client.listAllProducts();
 ```
 
-### Store
+#### 🏪 Store
 
 ```typescript
 const store = await client.retrieveStore({
@@ -145,7 +145,7 @@ const store = await client.retrieveStore({
 const stores = await client.listAllStores();
 ```
 
-### Subscription
+#### ♻️ Subscription
 
 ```typescript
 const updatedSubscription = await client.updateSubscription({
@@ -159,13 +159,13 @@ const subscription = await client.retrieveSubscription({
 const subscriptions = await client.listAllSubscriptions();
 ```
 
-### User
+#### 🧘 User
 
 ```typescript
 const user = await client.getUser();
 ```
 
-### Variant
+#### 🧟 Variant
 
 ```typescript
 const variant = await client.retrieveVariant({

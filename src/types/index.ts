@@ -15,6 +15,14 @@ export type {
 } from "./order";
 
 export type {
+  LemonsqueezyOrderItem,
+  ListAllOrderItemsOptions,
+  ListAllOrderItemsResult,
+  RetrieveOrderItemOptions,
+  RetrieveOrderItemResult,
+} from "./orderItem";
+
+export type {
   LemonsqueezyProduct,
   ListAllProductsOptions,
   ListAllProductsResult,

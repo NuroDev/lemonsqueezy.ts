@@ -1,7 +1,14 @@
 import fetch from "node-fetch";
 import { join } from "node:path";
 
-import { LemonsqueezyDataType, UpdateSubscriptionResult } from "./types";
+import {
+  LemonsqueezyDataType,
+  ListAllDiscountsOptions,
+  ListAllDiscountsResult,
+  RetrieveDiscountOptions,
+  RetrieveDiscountResult,
+  UpdateSubscriptionResult,
+} from "./types";
 
 import type {
   BaseLemonsqueezyResponse,
@@ -424,6 +431,49 @@ export class Lemonsqueezy {
       },
       path: `/subscriptions/${id}`,
       method: "PATCH",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve discount
+   *
+   * @description Retrieves the discount with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/discounts#retrieve-a-discount
+   *
+   * @param {String} options.id - The ID of the discount to retrieve
+   *
+   * @returns A discount object
+   */
+  public async retrieveDiscount(options: RetrieveDiscountOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveDiscountResult>({
+      path: `/discounts/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all discounts
+   *
+   * @description Returns a paginated list of discounts
+   *
+   * @docs https://docs.lemonsqueezy.com/api/discounts#list-all-discounts
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of discount objects ordered by `created_at`
+   */
+  public async listAllDiscounts(options: ListAllDiscountsOptions = {}) {
+    const { storeId, ...rest } = options;
+
+    return this._request<ListAllDiscountsResult>({
+      params: {
+        ...(storeId ? { store_id: storeId } : {}),
+      },
+      path: "/discounts",
       ...rest,
     });
   }

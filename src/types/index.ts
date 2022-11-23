@@ -1,4 +1,12 @@
 export type {
+  LemonsqueezyDiscount,
+  ListAllDiscountsOptions,
+  ListAllDiscountsResult,
+  RetrieveDiscountOptions,
+  RetrieveDiscountResult,
+} from "./discount";
+
+export type {
   LemonsqueezyFile,
   ListAllFilesOptions,
   ListAllFilesResult,

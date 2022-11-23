@@ -5,6 +5,16 @@ import { Lemonsqueezy } from ".";
 describe("Client", () => {
   const client = new Lemonsqueezy("");
 
+  describe("File", () => {
+    it("Retrieve file", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all files", async () => {
+      expect(true).toEqual(true);
+    });
+  });
+
   describe("Product", () => {
     it("Retrieve product", async () => {
       expect(true).toEqual(true);

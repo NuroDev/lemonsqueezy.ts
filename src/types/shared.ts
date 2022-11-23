@@ -23,6 +23,7 @@ export interface LemonsqueezyOptions
 }
 
 export enum LemonsqueezyDataType {
+  FILES = "files",
   PRODUCTS = "products",
   STORES = "stores",
   USERS = "users",

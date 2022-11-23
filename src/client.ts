@@ -5,12 +5,16 @@ import type {
   GetUserOptions,
   GetUserResult,
   LemonsqueezyOptions,
+  ListAllFilesOptions,
+  ListAllFilesResult,
   ListAllProductsOptions,
   ListAllProductsResult,
   ListAllStoresOptions,
   ListAllStoresResult,
   ListAllVariantsOptions,
   ListAllVariantsResult,
+  RetrieveFileOptions,
+  RetrieveFileResult,
   RetrieveProductOptions,
   RetrieveProductResult,
   RetrieveStoreOptions,
@@ -154,6 +158,47 @@ export class Lemonsqueezy {
           }
         : undefined,
       path: "/variants",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve file
+   *
+   * @description Retrieves the file with the given ID
+   *
+   * @param {String} options.id - The ID of the file to retrieve
+   *
+   * @returns A file object
+   */
+  public async retrieveFile(options: RetrieveFileOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveFileResult>({
+      path: `/files/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all files
+   *
+   * @description Returns a paginated list of files
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of file objects ordered by `sort`
+   */
+  public async listAllFiles(options: ListAllFilesOptions = {}) {
+    const { variantId, ...rest } = options;
+
+    return this._request<ListAllFilesResult>({
+      data: variantId
+        ? {
+            product_id: variantId,
+          }
+        : undefined,
+      path: "/files",
       ...rest,
     });
   }

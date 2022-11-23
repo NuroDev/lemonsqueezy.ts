@@ -1,4 +1,12 @@
 export type {
+  LemonsqueezyFile,
+  ListAllFilesOptions,
+  ListAllFilesResult,
+  RetrieveFileOptions,
+  RetrieveFileResult,
+} from "./file";
+
+export type {
   LemonsqueezyProduct,
   ListAllProductsOptions,
   ListAllProductsResult,

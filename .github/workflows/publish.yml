@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+env:
+  LEMON_SQUEEZY_API_KEY: ${{ secrets.LEMON_SQUEEZY_API_KEY }}
+
 jobs:
   publish:
     runs-on: ubuntu-latest

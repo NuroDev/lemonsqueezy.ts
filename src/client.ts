@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { join } from "node:path";
 
 import type {
+  BaseLemonsqueezyResponse,
   GetUserOptions,
   GetUserResult,
   LemonsqueezyOptions,
@@ -19,6 +20,7 @@ import type {
   ListAllSubscriptionsResult,
   ListAllVariantsOptions,
   ListAllVariantsResult,
+  PaginatedBaseLemonsqueezyResponse,
   RetrieveFileOptions,
   RetrieveFileResult,
   RetrieveOrderItemOptions,
@@ -334,7 +336,11 @@ export class Lemonsqueezy {
     });
   }
 
-  private async _request<TResponse = Record<string, unknown>>({
+  private async _request<
+    TResponse extends
+      | BaseLemonsqueezyResponse<any>
+      | PaginatedBaseLemonsqueezyResponse<any>
+  >({
     apiVersion = "v1",
     baseUrl = "https://api.lemonsqueezy.com",
     data,
@@ -366,6 +372,7 @@ export class Lemonsqueezy {
       });
 
       const json = (await response.json()) as TResponse;
+      if (json.errors && json.errors.length > 0) throw json;
 
       return json;
     } catch (error) {

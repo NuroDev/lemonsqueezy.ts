@@ -1,6 +1,7 @@
 import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyDataType,
+  PaginatedBaseLemonsqueezyResponse,
   SharedLemonsqueezyOptions,
 } from "./shared";
 
@@ -159,25 +160,9 @@ export interface ListAllSubscriptionsOptions extends SharedLemonsqueezyOptions {
   variantId?: string;
 }
 
-export interface ListAllSubscriptionsResult
-  extends BaseLemonsqueezyResponse<
-    Array<LemonsqueezySubscription>,
-    {
-      first: string;
-      last: string;
-    }
-  > {
-  meta: {
-    page: {
-      currentPage: number;
-      from: number;
-      lastPage: number;
-      perPage: number;
-      to: number;
-      total: number;
-    };
-  };
-}
+export type ListAllSubscriptionsResult = PaginatedBaseLemonsqueezyResponse<
+  Array<LemonsqueezySubscription>
+>;
 
 export interface RetrieveSubscriptionOptions extends SharedLemonsqueezyOptions {
   id: string;

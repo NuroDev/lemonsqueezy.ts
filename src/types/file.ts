@@ -1,6 +1,7 @@
 import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyDataType,
+  PaginatedBaseLemonsqueezyResponse,
   SharedLemonsqueezyOptions,
 } from "./shared";
 
@@ -76,22 +77,6 @@ export interface ListAllFilesOptions extends SharedLemonsqueezyOptions {
   variantId?: string;
 }
 
-export interface ListAllFilesResult
-  extends BaseLemonsqueezyResponse<
-    Array<LemonsqueezyFile>,
-    {
-      first: string;
-      last: string;
-    }
-  > {
-  meta: {
-    page: {
-      currentPage: number;
-      from: number;
-      lastPage: number;
-      perPage: number;
-      to: number;
-      total: number;
-    };
-  };
-}
+export type ListAllFilesResult = PaginatedBaseLemonsqueezyResponse<
+  Array<LemonsqueezyFile>
+>;

@@ -1,6 +1,7 @@
 import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyDataType,
+  PaginatedBaseLemonsqueezyResponse,
   SharedLemonsqueezyOptions,
 } from "./shared";
 
@@ -71,22 +72,6 @@ export interface ListAllOrderItemsOptions extends SharedLemonsqueezyOptions {
   variantId?: string;
 }
 
-export interface ListAllOrderItemsResult
-  extends BaseLemonsqueezyResponse<
-    Array<LemonsqueezyOrderItem>,
-    {
-      first: string;
-      last: string;
-    }
-  > {
-  meta: {
-    page: {
-      currentPage: number;
-      from: number;
-      lastPage: number;
-      perPage: number;
-      to: number;
-      total: number;
-    };
-  };
-}
+export type ListAllOrderItemsResult = PaginatedBaseLemonsqueezyResponse<
+  Array<LemonsqueezyOrderItem>
+>;

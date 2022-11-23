@@ -41,8 +41,32 @@ export interface BaseLemonsqueezyResponse<
   }
 > {
   data: TData;
+  errors?: Array<{
+    detail: string;
+    status: string | number;
+    title: string;
+  }>;
   jsonapi: {
     version: string;
   };
   links: TLinks;
+}
+
+export interface PaginatedBaseLemonsqueezyResponse<
+  TData,
+  TLinks = {
+    first: string;
+    last: string;
+  }
+> extends BaseLemonsqueezyResponse<TData, TLinks> {
+  meta: {
+    page: {
+      currentPage: number;
+      from: number;
+      lastPage: number;
+      perPage: number;
+      to: number;
+      total: number;
+    };
+  };
 }

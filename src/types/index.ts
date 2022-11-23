@@ -30,7 +30,11 @@ export type {
   RetrieveProductResult,
 } from "./product";
 
-export type { LemonsqueezyOptions } from "./shared";
+export type {
+  BaseLemonsqueezyResponse,
+  LemonsqueezyOptions,
+  PaginatedBaseLemonsqueezyResponse,
+} from "./shared";
 
 export type {
   LemonsqueezyStore,

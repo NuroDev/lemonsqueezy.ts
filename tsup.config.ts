@@ -7,6 +7,7 @@ export default defineConfig({
   dts: true,
   entryPoints: {
     index: "src/index.ts",
+    types: "src/types/index.ts",
   },
   format: ["cjs", "esm"],
   minify: isProduction,

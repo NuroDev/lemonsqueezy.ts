@@ -1,7 +1,13 @@
 import fetch from "node-fetch";
 import { join } from "node:path";
 
-import { LemonsqueezyDataType } from "./types";
+import {
+  LemonsqueezyDataType,
+  ListAllCheckoutsOptions,
+  ListAllCheckoutsResult,
+  RetrieveCheckoutOptions,
+  RetrieveCheckoutResult,
+} from "./types";
 
 import type {
   BaseLemonsqueezyResponse,
@@ -573,6 +579,50 @@ export class Lemonsqueezy {
         ...(licenseKeyId ? { license_key_id: licenseKeyId } : {}),
       },
       path: "/license-key-instances",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve checkout
+   *
+   * @description Retrieves the checkout with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/checkouts#retrieve-a-checkout
+   *
+   * @param {String} options.id - The ID of the checkout to retrieve
+   *
+   * @returns A checkout object
+   */
+  public async retrieveCheckout(options: RetrieveCheckoutOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveCheckoutResult>({
+      path: `/checkouts/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all checkouts
+   *
+   * @description Returns a paginated list of checkouts
+   *
+   * @docs https://docs.lemonsqueezy.com/api/checkouts#list-all-checkouts
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of checkout objects ordered by `created_at` (descending)
+   */
+  public async listAllCheckouts(options: ListAllCheckoutsOptions = {}) {
+    const { storeId, variantId, ...rest } = options;
+
+    return this._request<ListAllCheckoutsResult>({
+      params: {
+        ...(storeId ? { store_id: storeId } : {}),
+        ...(variantId ? { variant_id: variantId } : {}),
+      },
+      path: "/checkouts",
       ...rest,
     });
   }

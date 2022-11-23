@@ -5,6 +5,21 @@ import { Lemonsqueezy } from ".";
 describe("Client", () => {
   const client = new Lemonsqueezy("ABC123");
 
+  describe("Checkout", () => {
+    it("Retrieve checkiut", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all discount", async () => {
+      const checkouts = await client.listAllCheckouts();
+
+      expect(checkouts).toBeDefined();
+      expect(Array.isArray(checkouts)).toBe(true);
+      expect(checkouts.errors).not.toBeDefined();
+      expect(checkouts.errors?.length).toBe(0);
+    });
+  });
+
   describe("Discount", () => {
     it("Retrieve discount", async () => {
       expect(true).toEqual(true);

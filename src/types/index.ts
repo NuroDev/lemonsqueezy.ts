@@ -1,4 +1,16 @@
 export type {
+  LemonsqueezyBillingAddress,
+  LemonsqueezyCheckout,
+  LemonsqueezyCheckoutData,
+  LemonsqueezyCheckoutOptions,
+  LemonsqueezyProductOptions,
+  ListAllCheckoutsOptions,
+  ListAllCheckoutsResult,
+  RetrieveCheckoutOptions,
+  RetrieveCheckoutResult,
+} from "./checkout";
+
+export type {
   LemonsqueezyDiscount,
   ListAllDiscountsOptions,
   ListAllDiscountsResult,

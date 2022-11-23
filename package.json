@@ -1,0 +1,49 @@
+{
+  "name": "typescript-lib",
+  "version": "0.1.1",
+  "description": "Project template to bootstrap a new TypeScript library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nurodev/typescript-lib.git"
+  },
+  "homepage": "https://github.com/nurodev/typescript-lib",
+  "bugs": "https://github.com/nurodev/typescript-lib/issues",
+  "author": {
+    "name": "nurodev",
+    "email": "me@nuro.dev",
+    "url": "https://nuro.dev"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "coverage": "vitest run --coverage",
+    "dev": "yarn build --watch",
+    "build": "rimraf dist && tsup",
+    "build:prod": "cross-env NODE_ENV=production yarn build",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:ui": "vitest watch --ui"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^17.0.35",
+    "@vitest/ui": "^0.12.9",
+    "c8": "^7.11.3",
+    "cross-env": "^7.0.3",
+    "minifaker": "^1.34.1",
+    "rimraf": "^3.0.2",
+    "tsup": "^5.12.8",
+    "typescript": "^4.6.4",
+    "vitest": "^0.12.9"
+  }
+}

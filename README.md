@@ -2,9 +2,9 @@
   <h1>
     <br/>
     <br/>
-    ❗
+    🍋
     <br />
-    package-template
+    lemonsqueezy.ts
     <br />
     <br />
     <br />
@@ -12,13 +12,13 @@
   </h1>
   <sup>
     <br />
-    Template project to build a new NPM package using TypeScript</em>
+    JavaScript / TypeScript SDK for the Lemon Squeezy API</em>
     <br />
     <br />
   
-[![Package Version](https://img.shields.io/npm/v/package-template?label=%20&style=for-the-badge)](https://www.npmjs.com/package/package-template)
-[![Package Monthly Downloads](https://img.shields.io/npm/dm/package-template?color=blue&label=%20&style=for-the-badge)](https://www.npmjs.com/package/package-template)
-[![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://github.com/nurodev/package-template)
+[![Package Version](https://img.shields.io/npm/v/lemonsqueezy.ts?label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
+[![Package Monthly Downloads](https://img.shields.io/npm/dm/lemonsqueezy.ts?color=blue&label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
+[![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://github.com/nurodev/lemonsqueezy.ts)
 
   </sup>
   <br />
@@ -31,21 +31,21 @@ Install it locally in your project
 
 ```bash
 # npm
-npm install package-template
+npm install lemonsqueezy.ts
 
 # yarn
-yarn add package-template
+yarn add lemonsqueezy.ts
 
 # pnpm
-pnpm install package-template
+pnpm install lemonsqueezy.ts
 ```
 
 ## 🦄 Usage
 
 ```typescript
 // ESM
-import { } from 'package-template'
+import {} from "lemonsqueezy.ts";
 
 // CommonJS
-const { } = require('package-template')
+const {} = require("lemonsqueezy.ts");
 ```

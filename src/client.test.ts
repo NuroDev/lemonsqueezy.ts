@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { Lemonsqueezy } from ".";
 
 describe("Client", () => {
-  const client = new Lemonsqueezy("");
+  const client = new Lemonsqueezy("ABC123");
 
   describe("File", () => {
     it("Retrieve file", async () => {
@@ -11,7 +11,12 @@ describe("Client", () => {
     });
 
     it("List all files", async () => {
-      expect(true).toEqual(true);
+      const files = await client.listAllFiles();
+
+      expect(files).toBeDefined();
+      expect(Array.isArray(files)).toBe(true);
+      expect(files.errors).not.toBeDefined();
+      expect(files.errors?.length).toBe(0);
     });
   });
 
@@ -21,7 +26,12 @@ describe("Client", () => {
     });
 
     it("List all orders", async () => {
-      expect(true).toEqual(true);
+      const orders = await client.listAllOrders();
+
+      expect(orders).toBeDefined();
+      expect(Array.isArray(orders)).toBe(true);
+      expect(orders.errors).not.toBeDefined();
+      expect(orders.errors?.length).toBe(0);
     });
   });
 
@@ -31,7 +41,12 @@ describe("Client", () => {
     });
 
     it("List all order items", async () => {
-      expect(true).toEqual(true);
+      const orderItems = await client.listAllOrderItems();
+
+      expect(orderItems).toBeDefined();
+      expect(Array.isArray(orderItems)).toBe(true);
+      expect(orderItems.errors).not.toBeDefined();
+      expect(orderItems.errors?.length).toBe(0);
     });
   });
 
@@ -41,7 +56,12 @@ describe("Client", () => {
     });
 
     it("List all products", async () => {
-      expect(true).toEqual(true);
+      const products = await client.listAllProducts();
+
+      expect(products).toBeDefined();
+      expect(Array.isArray(products)).toBe(true);
+      expect(products.errors).not.toBeDefined();
+      expect(products.errors?.length).toBe(0);
     });
   });
 
@@ -51,7 +71,12 @@ describe("Client", () => {
     });
 
     it("List all stores", async () => {
-      expect(true).toEqual(true);
+      const stores = await client.listAllStores();
+
+      expect(stores).toBeDefined();
+      expect(Array.isArray(stores)).toBe(true);
+      expect(stores.errors).not.toBeDefined();
+      expect(stores.errors?.length).toBe(0);
     });
   });
 
@@ -65,7 +90,12 @@ describe("Client", () => {
     });
 
     it("List all subscriptions", async () => {
-      expect(true).toEqual(true);
+      const subscriptions = await client.listAllSubscriptions();
+
+      expect(subscriptions).toBeDefined();
+      expect(Array.isArray(subscriptions)).toBe(true);
+      expect(subscriptions.errors).not.toBeDefined();
+      expect(subscriptions.errors?.length).toBe(0);
     });
   });
 
@@ -81,7 +111,12 @@ describe("Client", () => {
     });
 
     it("List all variants", async () => {
-      expect(true).toEqual(true);
+      const variants = await client.listAllVariants();
+
+      expect(variants).toBeDefined();
+      expect(Array.isArray(variants)).toBe(true);
+      expect(variants.errors).not.toBeDefined();
+      expect(variants.errors?.length).toBe(0);
     });
   });
 });

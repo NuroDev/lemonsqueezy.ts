@@ -40,6 +40,14 @@ export type {
   RetrieveStoreResult,
 } from "./store";
 
+export type {
+  LemonsqueezySubscription,
+  ListAllSubscriptionsOptions,
+  ListAllSubscriptionsResult,
+  RetrieveSubscriptionOptions,
+  RetrieveSubscriptionResult,
+} from "./subscription";
+
 export type { GetUserOptions, GetUserResult, LemonsqueezyUser } from "./user";
 
 export type {

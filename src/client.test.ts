@@ -55,6 +55,20 @@ describe("Client", () => {
     });
   });
 
+  describe("Subscription", () => {
+    it("Update subscriptions", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("Retrieve subscription", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all subscriptions", async () => {
+      expect(true).toEqual(true);
+    });
+  });
+
   describe("User", () => {
     it("Get user", async () => {
       expect(true).toEqual(true);

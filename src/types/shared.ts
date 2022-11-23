@@ -24,10 +24,11 @@ export interface LemonsqueezyOptions
 
 export enum LemonsqueezyDataType {
   FILES = "files",
-  ORDERS = "orders",
   ORDER_ITEMS = "order-items",
+  ORDERS = "orders",
   PRODUCTS = "products",
   STORES = "stores",
+  SUBSCRIPTIONS = "subscriptions",
   USERS = "users",
   VARIANTS = "variants",
 }

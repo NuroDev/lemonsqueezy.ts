@@ -15,6 +15,8 @@ import type {
   ListAllProductsResult,
   ListAllStoresOptions,
   ListAllStoresResult,
+  ListAllSubscriptionsOptions,
+  ListAllSubscriptionsResult,
   ListAllVariantsOptions,
   ListAllVariantsResult,
   RetrieveFileOptions,
@@ -27,6 +29,8 @@ import type {
   RetrieveProductResult,
   RetrieveStoreOptions,
   RetrieveStoreResult,
+  RetrieveSubscriptionOptions,
+  RetrieveSubscriptionResult,
   RetrieveVariantOptions,
   RetrieveVariantResult,
 } from "./types";
@@ -282,6 +286,53 @@ export class Lemonsqueezy {
             }
           : undefined,
       path: "/order-items",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve subscription
+   *
+   * @description Retrieves the subscription with the given ID
+   *
+   * @param {String} options.id - The ID of the subscription to retrieve
+   *
+   * @returns A subscription object
+   */
+  public async retrieveSubscription(options: RetrieveSubscriptionOptions) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveSubscriptionResult>({
+      path: `/subscriptions/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all order items
+   *
+   * @description Returns a paginated list of order items
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of subscription objects ordered by `created_at` (descending)
+   */
+  public async listAllSubscriptions(options: ListAllSubscriptionsOptions = {}) {
+    const { orderId, orderItemId, productId, storeId, variantId, ...rest } =
+      options;
+
+    return this._request<ListAllSubscriptionsResult>({
+      data:
+        orderId && orderItemId && productId && storeId && variantId
+          ? {
+              ...(orderId ? { order_id: orderId } : {}),
+              ...(orderItemId ? { order_item_id: orderItemId } : {}),
+              ...(productId ? { product_id: productId } : {}),
+              ...(storeId ? { store_id: storeId } : {}),
+              ...(variantId ? { variant_id: variantId } : {}),
+            }
+          : undefined,
+      path: "/subscriptions",
       ...rest,
     });
   }

@@ -1,1 +1,1 @@
-export { add } from "./modules";
+export { Lemonsqueezy } from "./client";

@@ -5,10 +5,6 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
-export interface RetrieveVariantOptions extends SharedLemonsqueezyOptions {
-  id: string;
-}
-
 export type LemonsqueezyInterval = "day" | "week" | "month" | "year";
 
 export interface LemonsqueezyVariant {
@@ -140,9 +136,6 @@ export interface LemonsqueezyVariant {
   id: string | number;
 }
 
-export type RetrieveVariantResult =
-  BaseLemonsqueezyResponse<LemonsqueezyVariant>;
-
 export interface ListAllVariantsOptions extends SharedLemonsqueezyOptions {
   /**
    * Only return variants belonging to the product with this ID
@@ -153,3 +146,10 @@ export interface ListAllVariantsOptions extends SharedLemonsqueezyOptions {
 export type ListAllVariantsResult = PaginatedBaseLemonsqueezyResponse<
   Array<LemonsqueezyVariant>
 >;
+
+export interface RetrieveVariantOptions extends SharedLemonsqueezyOptions {
+  id: string;
+}
+
+export type RetrieveVariantResult =
+  BaseLemonsqueezyResponse<LemonsqueezyVariant>;

@@ -5,10 +5,6 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
-export interface RetrieveFileOptions extends SharedLemonsqueezyOptions {
-  id: string;
-}
-
 export interface LemonsqueezyFile {
   attributes: {
     /**
@@ -68,8 +64,6 @@ export interface LemonsqueezyFile {
   id: string | number;
 }
 
-export type RetrieveFileResult = BaseLemonsqueezyResponse<LemonsqueezyFile>;
-
 export interface ListAllFilesOptions extends SharedLemonsqueezyOptions {
   /**
    * Only return files belonging to the variant with this ID
@@ -80,3 +74,9 @@ export interface ListAllFilesOptions extends SharedLemonsqueezyOptions {
 export type ListAllFilesResult = PaginatedBaseLemonsqueezyResponse<
   Array<LemonsqueezyFile>
 >;
+
+export interface RetrieveFileOptions extends SharedLemonsqueezyOptions {
+  id: string;
+}
+
+export type RetrieveFileResult = BaseLemonsqueezyResponse<LemonsqueezyFile>;

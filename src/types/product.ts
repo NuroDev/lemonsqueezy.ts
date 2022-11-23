@@ -5,10 +5,6 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
-export interface RetrieveProductOptions extends SharedLemonsqueezyOptions {
-  id: string;
-}
-
 export interface LemonsqueezyProduct {
   attributes: {
     /**
@@ -92,9 +88,6 @@ export interface LemonsqueezyProduct {
   id: string | number;
 }
 
-export type RetrieveProductResult =
-  BaseLemonsqueezyResponse<LemonsqueezyProduct>;
-
 export interface ListAllProductsOptions extends SharedLemonsqueezyOptions {
   /**
    * Only return products belonging to the store with this ID
@@ -105,3 +98,10 @@ export interface ListAllProductsOptions extends SharedLemonsqueezyOptions {
 export type ListAllProductsResult = PaginatedBaseLemonsqueezyResponse<
   Array<LemonsqueezyProduct>
 >;
+
+export interface RetrieveProductOptions extends SharedLemonsqueezyOptions {
+  id: string;
+}
+
+export type RetrieveProductResult =
+  BaseLemonsqueezyResponse<LemonsqueezyProduct>;

@@ -5,10 +5,6 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
-export interface RetrieveOrderOptions extends SharedLemonsqueezyOptions {
-  id: string;
-}
-
 export interface LemonsqueezyOrder {
   attributes: {
     /**
@@ -118,8 +114,6 @@ export interface LemonsqueezyOrder {
   id: string | number;
 }
 
-export type RetrieveOrderResult = BaseLemonsqueezyResponse<LemonsqueezyOrder>;
-
 export interface ListAllOrdersOptions extends SharedLemonsqueezyOptions {
   /**
    * Only return orders belonging to the store with this ID
@@ -134,3 +128,9 @@ export interface ListAllOrdersOptions extends SharedLemonsqueezyOptions {
 export type ListAllOrdersResult = PaginatedBaseLemonsqueezyResponse<
   Array<LemonsqueezyOrder>
 >;
+
+export interface RetrieveOrderOptions extends SharedLemonsqueezyOptions {
+  id: string;
+}
+
+export type RetrieveOrderResult = BaseLemonsqueezyResponse<LemonsqueezyOrder>;

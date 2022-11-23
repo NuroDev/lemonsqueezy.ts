@@ -1,13 +1,18 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
 
 import { Lemonsqueezy } from ".";
 
 describe("Client", () => {
   const { LEMON_SQUEEZY_API_KEY } = process.env;
-  if (!LEMON_SQUEEZY_API_KEY)
-    throw "No LEMON_SQUEEZY_API_KEY environment variable found";
 
-  const client = new Lemonsqueezy(LEMON_SQUEEZY_API_KEY);
+  let client: Lemonsqueezy;
+
+  beforeAll(() => {
+    if (!LEMON_SQUEEZY_API_KEY)
+      throw "No LEMON_SQUEEZY_API_KEY environment variable found";
+
+    client = new Lemonsqueezy(LEMON_SQUEEZY_API_KEY);
+  });
 
   describe("Checkout", () => {
     it("Create checkout", async () => {

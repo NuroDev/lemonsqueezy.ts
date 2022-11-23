@@ -5,6 +5,22 @@ import type {
   SharedLemonsqueezyOptions,
 } from "./shared";
 
+interface LemonsqueezySubscriptionPause {
+  /**
+   * Defines payment pause behaviour, can be one of:
+   *
+   *  - `void` - If you can't offer your services for a period of time (for maintenance as an example), you can void invoices so your customers aren't charged
+   *  - `free` - Offer your subscription services for free, whilst halting payment collection
+   */
+  mode: "void" | "free";
+  /**
+   * An ISO-8601 formatted date-time string indicating when the subscription will continue collecting payments
+   *
+   * @see https://en.wikipedia.org/wiki/ISO_8601
+   */
+  resumes_at: Date;
+}
+
 /**
  * @docs https://docs.lemonsqueezy.com/api/subscriptions#the-subscription-object
  */
@@ -45,21 +61,7 @@ export interface LemonsqueezySubscription {
      *
      * The pause object can be null, which indicates payment collection is not paused
      */
-    pause: {
-      /**
-       * Defines payment pause behaviour, can be one of:
-       *
-       *  - `void` - If you can't offer your services for a period of time (for maintenance as an example), you can void invoices so your customers aren't charged
-       *  - `free` - Offer your subscription services for free, whilst halting payment collection
-       */
-      mode: "void" | "free";
-      /**
-       * An ISO-8601 formatted date-time string indicating when the subscription will continue collecting payments
-       *
-       * @see https://en.wikipedia.org/wiki/ISO_8601
-       */
-      resumes_at: Date;
-    } | null;
+    pause: LemonsqueezySubscriptionPause | null;
     /**
      * The ID of the product associated with this subscription
      */
@@ -174,4 +176,48 @@ export interface RetrieveSubscriptionOptions extends SharedLemonsqueezyOptions {
 export type RetrieveSubscriptionResult =
   BaseLemonsqueezyResponse<LemonsqueezySubscription>;
 
-export interface UpdateSubscriptionOptions extends SharedLemonsqueezyOptions {}
+export interface UpdateSubscriptionOptions extends SharedLemonsqueezyOptions {
+  /**
+   * An integer representing a day of the month (`21` equals `21st day of the month`).
+   * This is the day of which subscription invoice payments are collected.
+   *
+   * Setting this value to a valid integer (1-31) will set the billing anchor to the next occurrence of that day.
+   * For example, if on the 21st of January you set the subscription billing anchor to the 1st, the next occurrence of that day is February 1st.
+   * All invoices from that point on will be generated on the 1st of the month
+   *
+   * When setting a new billing anchor day, we calculate the next occurrence and issue a paid, prorated trial which ends on the next occurrence date.
+   * When the trial ends, the customer is charged for the full prorated amount
+   */
+  billingAnchor?: number;
+  /**
+   * Set as `true` to cancel the subscription.
+   *
+   * You can uncancel (before the `ends_at` date) by setting to `false`
+   */
+  cancelled?: boolean;
+  id: string;
+  /**
+   * An object containing the payment collection pause behaviour options for the subscription
+   */
+  pause?: LemonsqueezySubscriptionPause;
+  /**
+   * The ID of the Product Object you want to switch this subscription to.
+   *
+   * If set, requires a Variant Object ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/products
+   * @docs https://docs.lemonsqueezy.com/api/variants
+   */
+  productId: string;
+  /**
+   * The ID of the Variant Object you want to switch this subscription to.
+   *
+   * Required if `product_id` set
+   *
+   * @docs https://docs.lemonsqueezy.com/api/variants
+   */
+  variantId: string;
+}
+
+export type UpdateSubscriptionResult =
+  BaseLemonsqueezyResponse<LemonsqueezySubscription>;

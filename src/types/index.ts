@@ -30,6 +30,7 @@ export type {
   RetrieveProductResult,
 } from "./product";
 
+export { LemonsqueezyDataType } from "./shared";
 export type {
   BaseLemonsqueezyResponse,
   LemonsqueezyOptions,
@@ -50,6 +51,8 @@ export type {
   ListAllSubscriptionsResult,
   RetrieveSubscriptionOptions,
   RetrieveSubscriptionResult,
+  UpdateSubscriptionOptions,
+  UpdateSubscriptionResult,
 } from "./subscription";
 
 export type { GetUserOptions, GetUserResult, LemonsqueezyUser } from "./user";

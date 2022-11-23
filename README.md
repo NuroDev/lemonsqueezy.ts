@@ -44,8 +44,95 @@ pnpm install lemonsqueezy.ts
 
 ```typescript
 // ESM
-import {} from "lemonsqueezy.ts";
+import { Lemonsqueezy } from "lemonsqueezy.ts";
 
-// CommonJS
-const {} = require("lemonsqueezy.ts");
+const client = new Lemonsqueezy("YOUR_API_KEY");
+
+// Checkout
+const newCheckout = await client.createCheckout({
+  // ...
+});
+
+const checkout = await client.retrieveCheckout({
+  id: "...",
+});
+
+const checkouts = await client.listAllCheckouts();
+
+// Discount
+const discount = await client.retrieveDiscount({
+  id: "...",
+});
+
+const discounts = await client.listAllDiscounts();
+
+// File
+const file = await client.retrieveFile({
+  id: "...",
+});
+
+const files = await client.listAllFiles();
+
+// License key
+const licenseKey = await client.retrieveLicenseKey({
+  id: "...",
+});
+
+const licenseKeys = await client.listAllLicenseKeys();
+
+// License key instance
+const licenseKeyInstance = await client.retrieveLicenseKeyInstance({
+  id: "...",
+});
+
+const licenseKeyInstances = await client.listAllLicenseKeyInstances();
+
+// Order
+const order = await client.retrieveOrder({
+  id: "...",
+});
+
+const orders = await client.listAllOrders();
+
+// Order Item
+const orderItem = await client.retrieveOrderItem({
+  id: "...",
+});
+
+const orderItems = await client.listAllOrderItems();
+
+// Product
+const product = await client.retrieveProduct({
+  id: "...",
+});
+
+const products = await client.listAllProducts();
+
+// Store
+const store = await client.retrieveStore({
+  id: "...",
+});
+
+const stores = await client.listAllStores();
+
+// Subscription
+const updatedSubscription = await client.updateSubscription({
+  // ...
+});
+
+const subscription = await client.retrieveSubscription({
+  id: "...",
+});
+
+const subscriptions = await client.listAllSubscriptions();
+
+// User
+const user = await client.getUser();
+
+// Variant
+const variant = await client.retrieveVariant({
+  id: "...",
+});
+
+const variants = await client.listAllVariants();
 ```

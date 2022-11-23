@@ -45,7 +45,6 @@ pnpm install lemonsqueezy.ts
 Create a new client instance with your API key
 
 ```typescript
-// ESM
 import { Lemonsqueezy } from "lemonsqueezy.ts";
 
 const client = new Lemonsqueezy("YOUR_API_KEY");

@@ -9,6 +9,7 @@ export interface LemonsqueezyOptions
   extends Omit<RequestInit, "body">,
     SharedLemonsqueezyOptions {
   data?: Record<string, any>;
+  params?: Record<string, any>;
   method?:
     | "CONNECT"
     | "DELETE"

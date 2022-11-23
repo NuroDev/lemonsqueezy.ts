@@ -123,7 +123,9 @@ export class Lemonsqueezy {
     const { storeId, ...rest } = options;
 
     return this._request<ListAllProductsResult>({
-      data: storeId ? { store_id: storeId } : undefined,
+      params: {
+        ...(storeId ? { store_id: storeId } : {}),
+      },
       path: "/products",
       ...rest,
     });
@@ -160,7 +162,9 @@ export class Lemonsqueezy {
     const { productId, ...rest } = options;
 
     return this._request<ListAllVariantsResult>({
-      data: productId ? { product_id: productId } : undefined,
+      params: {
+        ...(productId ? { product_id: productId } : {}),
+      },
       path: "/variants",
       ...rest,
     });
@@ -197,7 +201,9 @@ export class Lemonsqueezy {
     const { variantId, ...rest } = options;
 
     return this._request<ListAllFilesResult>({
-      data: variantId ? { variant_id: variantId } : undefined,
+      params: {
+        ...(variantId ? { variant_id: variantId } : {}),
+      },
       path: "/files",
       ...rest,
     });
@@ -234,13 +240,10 @@ export class Lemonsqueezy {
     const { storeId, userEmail, ...rest } = options;
 
     return this._request<ListAllOrdersResult>({
-      data:
-        storeId && userEmail
-          ? {
-              ...(storeId ? { store_id: storeId } : {}),
-              ...(userEmail ? { user_email: userEmail } : {}),
-            }
-          : undefined,
+      params: {
+        ...(storeId ? { store_id: storeId } : {}),
+        ...(userEmail ? { user_email: userEmail } : {}),
+      },
       path: "/orders",
       ...rest,
     });
@@ -277,14 +280,11 @@ export class Lemonsqueezy {
     const { orderId, productId, variantId, ...rest } = options;
 
     return this._request<ListAllOrderItemsResult>({
-      data:
-        orderId && productId && variantId
-          ? {
-              ...(orderId ? { order_id: orderId } : {}),
-              ...(productId ? { product_id: productId } : {}),
-              ...(variantId ? { variant_id: variantId } : {}),
-            }
-          : undefined,
+      params: {
+        ...(orderId ? { order_id: orderId } : {}),
+        ...(productId ? { product_id: productId } : {}),
+        ...(variantId ? { variant_id: variantId } : {}),
+      },
       path: "/order-items",
       ...rest,
     });
@@ -322,16 +322,13 @@ export class Lemonsqueezy {
       options;
 
     return this._request<ListAllSubscriptionsResult>({
-      data:
-        orderId && orderItemId && productId && storeId && variantId
-          ? {
-              ...(orderId ? { order_id: orderId } : {}),
-              ...(orderItemId ? { order_item_id: orderItemId } : {}),
-              ...(productId ? { product_id: productId } : {}),
-              ...(storeId ? { store_id: storeId } : {}),
-              ...(variantId ? { variant_id: variantId } : {}),
-            }
-          : undefined,
+      params: {
+        ...(orderId ? { order_id: orderId } : {}),
+        ...(orderItemId ? { order_item_id: orderItemId } : {}),
+        ...(productId ? { product_id: productId } : {}),
+        ...(storeId ? { store_id: storeId } : {}),
+        ...(variantId ? { variant_id: variantId } : {}),
+      },
       path: "/subscriptions",
       ...rest,
     });
@@ -341,14 +338,15 @@ export class Lemonsqueezy {
     apiVersion = "v1",
     baseUrl = "https://api.lemonsqueezy.com",
     data,
+    params,
     headers,
     method = "GET",
     path,
   }: LemonsqueezyOptions): Promise<TResponse> {
     try {
       const url = new URL(join(apiVersion, path), baseUrl);
-      if (data && method === "GET")
-        Object.entries(data).forEach(([key, value]) =>
+      if (params && method === "GET")
+        Object.entries(params).forEach(([key, value]) =>
           url.searchParams.append(key, value)
         );
 
@@ -362,7 +360,7 @@ export class Lemonsqueezy {
         method,
         ...(data && method !== "GET"
           ? {
-              body: typeof data === "string" ? data : JSON.stringify(data),
+              body: JSON.stringify(params),
             }
           : {}),
       });

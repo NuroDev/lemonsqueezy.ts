@@ -42,13 +42,18 @@ pnpm install lemonsqueezy.ts
 
 ## 🦄 Usage
 
+Create a new client instance with your API key
+
 ```typescript
 // ESM
 import { Lemonsqueezy } from "lemonsqueezy.ts";
 
 const client = new Lemonsqueezy("YOUR_API_KEY");
+```
 
-// Checkout
+### Checkout
+
+```typescript
 const newCheckout = await client.createCheckout({
   // ...
 });
@@ -58,64 +63,91 @@ const checkout = await client.retrieveCheckout({
 });
 
 const checkouts = await client.listAllCheckouts();
+```
 
-// Discount
+### Discount
+
+```typescript
 const discount = await client.retrieveDiscount({
   id: "...",
 });
 
 const discounts = await client.listAllDiscounts();
+```
 
-// File
+### File
+
+```typescript
 const file = await client.retrieveFile({
   id: "...",
 });
 
 const files = await client.listAllFiles();
+```
 
-// License key
+### License key
+
+```typescript
 const licenseKey = await client.retrieveLicenseKey({
   id: "...",
 });
 
 const licenseKeys = await client.listAllLicenseKeys();
+```
 
-// License key instance
+### License key instance
+
+```typescript
 const licenseKeyInstance = await client.retrieveLicenseKeyInstance({
   id: "...",
 });
 
 const licenseKeyInstances = await client.listAllLicenseKeyInstances();
+```
 
-// Order
+### Order
+
+```typescript
 const order = await client.retrieveOrder({
   id: "...",
 });
 
 const orders = await client.listAllOrders();
+```
 
-// Order Item
+### Order Item
+
+```typescript
 const orderItem = await client.retrieveOrderItem({
   id: "...",
 });
 
 const orderItems = await client.listAllOrderItems();
+```
 
-// Product
+### Product
+
+```typescript
 const product = await client.retrieveProduct({
   id: "...",
 });
 
 const products = await client.listAllProducts();
+```
 
-// Store
+### Store
+
+```typescript
 const store = await client.retrieveStore({
   id: "...",
 });
 
 const stores = await client.listAllStores();
+```
 
-// Subscription
+### Subscription
+
+```typescript
 const updatedSubscription = await client.updateSubscription({
   // ...
 });
@@ -125,11 +157,17 @@ const subscription = await client.retrieveSubscription({
 });
 
 const subscriptions = await client.listAllSubscriptions();
+```
 
-// User
+### User
+
+```typescript
 const user = await client.getUser();
+```
 
-// Variant
+### Variant
+
+```typescript
 const variant = await client.retrieveVariant({
   id: "...",
 });

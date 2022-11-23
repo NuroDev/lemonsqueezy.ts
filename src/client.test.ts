@@ -50,6 +50,21 @@ describe("Client", () => {
     });
   });
 
+  describe("License key instance", () => {
+    it("Retrieve license key instances", async () => {
+      expect(true).toEqual(true);
+    });
+
+    it("List all license key instances", async () => {
+      const licenseKeyinstances = await client.listAllLicenseKeyInstances();
+
+      expect(licenseKeyinstances).toBeDefined();
+      expect(Array.isArray(licenseKeyinstances)).toBe(true);
+      expect(licenseKeyinstances.errors).not.toBeDefined();
+      expect(licenseKeyinstances.errors?.length).toBe(0);
+    });
+  });
+
   describe("Order", () => {
     it("Retrieve order", async () => {
       expect(true).toEqual(true);

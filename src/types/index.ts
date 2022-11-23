@@ -23,6 +23,14 @@ export type {
 } from "./licenseKey";
 
 export type {
+  LemonsqueezyLicenseKeyInstance,
+  ListAllLicenseKeyInstancesOptions,
+  ListAllLicenseKeyInstancesResult,
+  RetrieveLicenseKeyInstanceOptions,
+  RetrieveLicenseKeyInstanceResult,
+} from "./licenseKeyInstance";
+
+export type {
   LemonsqueezyOrder,
   ListAllOrdersOptions,
   ListAllOrdersResult,

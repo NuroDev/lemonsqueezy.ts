@@ -1,26 +1,21 @@
 import fetch from "node-fetch";
 import { join } from "node:path";
 
-import {
-  LemonsqueezyDataType,
-  ListAllDiscountsOptions,
-  ListAllDiscountsResult,
-  ListAllLicenseKeysOptions,
-  ListAllLicenseKeysResult,
-  RetrieveDiscountOptions,
-  RetrieveDiscountResult,
-  RetrieveLicenseKeyOptions,
-  RetrieveLicenseKeyResult,
-  UpdateSubscriptionResult,
-} from "./types";
+import { LemonsqueezyDataType } from "./types";
 
 import type {
   BaseLemonsqueezyResponse,
   GetUserOptions,
   GetUserResult,
   LemonsqueezyOptions,
+  ListAllDiscountsOptions,
+  ListAllDiscountsResult,
   ListAllFilesOptions,
   ListAllFilesResult,
+  ListAllLicenseKeyInstancesOptions,
+  ListAllLicenseKeyInstancesResult,
+  ListAllLicenseKeysOptions,
+  ListAllLicenseKeysResult,
   ListAllOrderItemsOptions,
   ListAllOrderItemsResult,
   ListAllOrdersOptions,
@@ -34,8 +29,14 @@ import type {
   ListAllVariantsOptions,
   ListAllVariantsResult,
   PaginatedBaseLemonsqueezyResponse,
+  RetrieveDiscountOptions,
+  RetrieveDiscountResult,
   RetrieveFileOptions,
   RetrieveFileResult,
+  RetrieveLicenseKeyInstanceOptions,
+  RetrieveLicenseKeyInstanceResult,
+  RetrieveLicenseKeyOptions,
+  RetrieveLicenseKeyResult,
   RetrieveOrderItemOptions,
   RetrieveOrderItemResult,
   RetrieveOrderOptions,
@@ -49,6 +50,7 @@ import type {
   RetrieveVariantOptions,
   RetrieveVariantResult,
   UpdateSubscriptionOptions,
+  UpdateSubscriptionResult,
 } from "./types";
 
 export class Lemonsqueezy {
@@ -524,6 +526,53 @@ export class Lemonsqueezy {
         ...(storeId ? { store_id: storeId } : {}),
       },
       path: "/license-keys",
+      ...rest,
+    });
+  }
+
+  /**
+   * Retrieve license key instance
+   *
+   * @description Retrieves the license key instance with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/license-key-instances#retrieve-a-license-key-instance
+   *
+   * @param {String} options.id - The ID of the license key instance to retrieve
+   *
+   * @returns A license key instance object
+   */
+  public async retrieveLicenseKeyInstance(
+    options: RetrieveLicenseKeyInstanceOptions
+  ) {
+    const { id, ...rest } = options;
+
+    return this._request<RetrieveLicenseKeyInstanceResult>({
+      path: `/license-key-instances/${id}`,
+      ...rest,
+    });
+  }
+
+  /**
+   * List all license key instances
+   *
+   * @description Returns a paginated list of license key instances
+   *
+   * @docs https://docs.lemonsqueezy.com/api/license-key-instances#list-all-license-key-instances
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of license key instance objects ordered by `id`
+   */
+  public async listAllLicenseKeyInstances(
+    options: ListAllLicenseKeyInstancesOptions = {}
+  ) {
+    const { licenseKeyId, ...rest } = options;
+
+    return this._request<ListAllLicenseKeyInstancesResult>({
+      params: {
+        ...(licenseKeyId ? { license_key_id: licenseKeyId } : {}),
+      },
+      path: "/license-key-instances",
       ...rest,
     });
   }

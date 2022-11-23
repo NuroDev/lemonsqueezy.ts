@@ -115,11 +115,7 @@ export class Lemonsqueezy {
     const { storeId, ...rest } = options;
 
     return this._request<ListAllProductsResult>({
-      data: storeId
-        ? {
-            product_id: storeId,
-          }
-        : undefined,
+      data: storeId ? { store_id: storeId } : undefined,
       path: "/products",
       ...rest,
     });
@@ -156,11 +152,7 @@ export class Lemonsqueezy {
     const { productId, ...rest } = options;
 
     return this._request<ListAllVariantsResult>({
-      data: productId
-        ? {
-            product_id: productId,
-          }
-        : undefined,
+      data: productId ? { product_id: productId } : undefined,
       path: "/variants",
       ...rest,
     });
@@ -197,11 +189,7 @@ export class Lemonsqueezy {
     const { variantId, ...rest } = options;
 
     return this._request<ListAllFilesResult>({
-      data: variantId
-        ? {
-            product_id: variantId,
-          }
-        : undefined,
+      data: variantId ? { variant_id: variantId } : undefined,
       path: "/files",
       ...rest,
     });
@@ -241,16 +229,8 @@ export class Lemonsqueezy {
       data:
         storeId && userEmail
           ? {
-              ...(storeId
-                ? {
-                    store_id: storeId,
-                  }
-                : {}),
-              ...(userEmail
-                ? {
-                    user_email: userEmail,
-                  }
-                : {}),
+              ...(storeId ? { store_id: storeId } : {}),
+              ...(userEmail ? { user_email: userEmail } : {}),
             }
           : undefined,
       path: "/orders",

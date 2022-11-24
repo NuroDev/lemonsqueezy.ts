@@ -6,3 +6,4 @@ export {
   listAllLicenseKeyInstances,
   retrieveLicenseKeyInstance,
 } from "./licenseKeyInstance";
+export { listAllOrders, retrieveOrder } from "./order";

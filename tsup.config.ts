@@ -21,6 +21,7 @@ export default defineConfig({
         "product",
         "store",
         "subscription",
+        "user",
       ].map((module) => [module, `src/modules/${module}/index.ts`])
     ),
   },

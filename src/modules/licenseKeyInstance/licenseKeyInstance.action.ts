@@ -22,10 +22,9 @@ import type {
 export async function listAllLicenseKeyInstances(
   options: ListAllLicenseKeyInstancesOptions & SharedModuleOptions
 ): Promise<ListAllLicenseKeyInstancesResult> {
-  const { apiKey, licenseKeyId, ...rest } = options;
+  const { licenseKeyId, ...rest } = options;
 
   return requestLemonSqueeze<ListAllLicenseKeyInstancesResult>({
-    apiKey,
     params: {
       ...(licenseKeyId ? { license_key_id: licenseKeyId } : {}),
     },
@@ -48,10 +47,9 @@ export async function listAllLicenseKeyInstances(
 export async function retrieveLicenseKeyInstance(
   options: RetrieveLicenseKeyInstanceOptions & SharedModuleOptions
 ): Promise<RetrieveLicenseKeyInstanceResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveLicenseKeyInstanceResult>({
-    apiKey,
     path: `/license-key-instances/${id}`,
     ...rest,
   });

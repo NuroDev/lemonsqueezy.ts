@@ -22,10 +22,9 @@ import type {
 export async function listAllProducts(
   options: ListAllProductsOptions & SharedModuleOptions
 ): Promise<ListAllProductsResult> {
-  const { apiKey, storeId, ...rest } = options;
+  const { storeId, ...rest } = options;
 
   return requestLemonSqueeze<ListAllProductsResult>({
-    apiKey,
     params: {
       ...(storeId ? { store_id: storeId } : {}),
     },
@@ -48,10 +47,9 @@ export async function listAllProducts(
 export async function retrieveProduct(
   options: RetrieveProductOptions & SharedModuleOptions
 ): Promise<RetrieveProductResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveProductResult>({
-    apiKey,
     path: `/products/${id}`,
     ...rest,
   });

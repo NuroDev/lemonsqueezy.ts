@@ -22,10 +22,9 @@ import type {
 export async function listAllFiles(
   options: ListAllFilesOptions & SharedModuleOptions
 ): Promise<ListAllFilesResult> {
-  const { apiKey, variantId, ...rest } = options;
+  const { variantId, ...rest } = options;
 
   return requestLemonSqueeze<ListAllFilesResult>({
-    apiKey,
     params: {
       ...(variantId ? { variant_id: variantId } : {}),
     },
@@ -48,10 +47,9 @@ export async function listAllFiles(
 export async function retrieveFile(
   options: RetrieveFileOptions & SharedModuleOptions
 ): Promise<RetrieveFileResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveFileResult>({
-    apiKey,
     path: `/files/${id}`,
     ...rest,
   });

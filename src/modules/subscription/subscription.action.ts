@@ -25,18 +25,10 @@ import type {
 export async function listAllSubscriptions(
   options: ListAllSubscriptionsOptions & SharedModuleOptions
 ): Promise<ListAllSubscriptionsResult> {
-  const {
-    apiKey,
-    orderId,
-    orderItemId,
-    productId,
-    storeId,
-    variantId,
-    ...rest
-  } = options;
+  const { orderId, orderItemId, productId, storeId, variantId, ...rest } =
+    options;
 
   return requestLemonSqueeze<ListAllSubscriptionsResult>({
-    apiKey,
     params: {
       ...(orderId ? { order_id: orderId } : {}),
       ...(orderItemId ? { order_item_id: orderItemId } : {}),
@@ -63,10 +55,9 @@ export async function listAllSubscriptions(
 export async function retrieveSubscription(
   options: RetrieveSubscriptionOptions & SharedModuleOptions
 ): Promise<RetrieveSubscriptionResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveSubscriptionResult>({
-    apiKey,
     path: `/subscriptions/${id}`,
     ...rest,
   });
@@ -103,19 +94,10 @@ export async function retrieveSubscription(
 export async function updateSubscription(
   options: UpdateSubscriptionOptions & SharedModuleOptions
 ): Promise<UpdateSubscriptionResult> {
-  const {
-    apiKey,
-    billingAnchor,
-    cancelled,
-    id,
-    pause,
-    productId,
-    variantId,
-    ...rest
-  } = options;
+  const { billingAnchor, cancelled, id, pause, productId, variantId, ...rest } =
+    options;
 
   return requestLemonSqueeze<UpdateSubscriptionResult>({
-    apiKey,
     data: {
       data: {
         attributes: {

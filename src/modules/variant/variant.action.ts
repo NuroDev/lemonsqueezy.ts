@@ -22,10 +22,9 @@ import type {
 export async function listAllVariants(
   options: ListAllVariantsOptions & SharedModuleOptions
 ): Promise<ListAllVariantsResult> {
-  const { apiKey, productId, ...rest } = options;
+  const { productId, ...rest } = options;
 
   return requestLemonSqueeze<ListAllVariantsResult>({
-    apiKey,
     params: {
       ...(productId ? { product_id: productId } : {}),
     },
@@ -48,10 +47,9 @@ export async function listAllVariants(
 export async function retrieveVariant(
   options: RetrieveVariantOptions & SharedModuleOptions
 ): Promise<RetrieveVariantResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveVariantResult>({
-    apiKey,
     path: `/variants/${id}`,
     ...rest,
   });

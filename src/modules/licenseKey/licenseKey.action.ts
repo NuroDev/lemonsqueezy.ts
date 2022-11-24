@@ -22,10 +22,9 @@ import type {
 export async function listAllLicenseKeys(
   options: ListAllLicenseKeysOptions & SharedModuleOptions
 ): Promise<ListAllLicenseKeysResult> {
-  const { apiKey, orderId, orderItemId, productId, storeId, ...rest } = options;
+  const { orderId, orderItemId, productId, storeId, ...rest } = options;
 
   return requestLemonSqueeze<ListAllLicenseKeysResult>({
-    apiKey,
     params: {
       ...(orderId ? { order_id: orderId } : {}),
       ...(orderItemId ? { order_item_id: orderItemId } : {}),
@@ -51,10 +50,9 @@ export async function listAllLicenseKeys(
 export async function retrieveLicenseKey(
   options: RetrieveLicenseKeyOptions & SharedModuleOptions
 ): Promise<RetrieveLicenseKeyResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveLicenseKeyResult>({
-    apiKey,
     path: `/license-keys/${id}`,
     ...rest,
   });

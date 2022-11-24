@@ -42,10 +42,9 @@ export async function listAllStores(
 export async function retrieveStore(
   options: RetrieveStoreOptions & SharedModuleOptions
 ): Promise<RetrieveStoreResult> {
-  const { apiKey, id, ...rest } = options;
+  const { id, ...rest } = options;
 
   return requestLemonSqueeze<RetrieveStoreResult>({
-    apiKey,
     path: `/stores/${id}`,
     ...rest,
   });

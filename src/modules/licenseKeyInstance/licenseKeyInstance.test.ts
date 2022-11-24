@@ -11,10 +11,6 @@ describe("License key instance", () => {
     if (!apiKey) throw "No LEMON_SQUEEZY_API_KEY environment variable found";
   });
 
-  it("Create license key instance", async () => {
-    expect(true).toEqual(true);
-  });
-
   it("Retrieve license key instance", async () => {
     expect(true).toEqual(true);
   });

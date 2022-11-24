@@ -11,10 +11,6 @@ describe("File", () => {
     if (!apiKey) throw "No LEMON_SQUEEZY_API_KEY environment variable found";
   });
 
-  it("Create file", async () => {
-    expect(true).toEqual(true);
-  });
-
   it("Retrieve file", async () => {
     expect(true).toEqual(true);
   });

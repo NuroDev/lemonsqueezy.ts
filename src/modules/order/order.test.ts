@@ -11,10 +11,6 @@ describe("Order", () => {
     if (!apiKey) throw "No LEMON_SQUEEZY_API_KEY environment variable found";
   });
 
-  it("Create order", async () => {
-    expect(true).toEqual(true);
-  });
-
   it("Retrieve order", async () => {
     expect(true).toEqual(true);
   });

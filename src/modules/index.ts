@@ -10,3 +10,4 @@ export { listAllOrders, retrieveOrder } from "./order";
 export { listAllOrderItems, retrieveOrderItem } from "./orderItem";
 export { listAllProducts, retrieveProduct } from "./product";
 export { listAllStores, retrieveStore } from "./store";
+export { listAllSubscriptions, retrieveSubscription } from "./subscription";

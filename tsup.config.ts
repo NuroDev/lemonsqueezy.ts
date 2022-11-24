@@ -20,6 +20,7 @@ export default defineConfig({
         "orderItem",
         "product",
         "store",
+        "subscription",
       ].map((module) => [module, `src/modules/${module}/index.ts`])
     ),
   },

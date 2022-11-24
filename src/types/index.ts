@@ -73,6 +73,7 @@ export type {
   BaseLemonsqueezyResponse,
   LemonsqueezyOptions,
   PaginatedBaseLemonsqueezyResponse,
+  SharedModuleOptions,
 } from "./shared";
 
 export type {

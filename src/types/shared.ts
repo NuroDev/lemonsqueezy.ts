@@ -1,5 +1,9 @@
 import type { RequestInit } from "node-fetch";
 
+export interface SharedModuleOptions {
+  apiKey: string;
+}
+
 export interface SharedLemonsqueezyOptions {
   apiVersion?: `v${number}`;
   baseUrl?: string;

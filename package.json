@@ -27,6 +27,30 @@
     "LICENSE",
     "README.md"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./modules": {
+      "import": "./dist/modules.mjs",
+      "require": "./dist/modules.js"
+    },
+    "./types": {
+      "import": "./dist/types.mjs",
+      "require": "./dist/types.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "modules": [
+        "./dist/modules.d.ts"
+      ],
+      "types": [
+        "./dist/types.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "dev": "yarn build --watch",
     "build": "rimraf dist && tsup",

@@ -7,7 +7,11 @@ export default defineConfig({
   dts: true,
   entryPoints: {
     index: "src/index.ts",
+    modules: "src/modules/index.ts",
     types: "src/types/index.ts",
+    ...Object.fromEntries(
+      ["checkout"].map((module) => [module, `src/modules/${module}/index.ts`])
+    ),
   },
   format: ["cjs", "esm"],
   minify: isProduction,

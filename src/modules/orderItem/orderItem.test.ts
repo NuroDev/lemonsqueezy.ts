@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 
 import "dotenv/config";
 
-import { listAllCheckouts } from ".";
+import { listAllOrderItems } from ".";
 
 describe("Order item", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -16,7 +16,7 @@ describe("Order item", () => {
   });
 
   it("List all order items", async () => {
-    const orderItems = await listAllCheckouts({
+    const orderItems = await listAllOrderItems({
       apiKey,
     });
 

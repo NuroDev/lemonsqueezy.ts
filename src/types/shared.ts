@@ -11,7 +11,8 @@ export interface SharedLemonsqueezyOptions {
 
 export interface LemonsqueezyOptions
   extends Omit<RequestInit, "body">,
-    SharedLemonsqueezyOptions {
+    SharedLemonsqueezyOptions,
+    SharedModuleOptions {
   data?: Record<string, any>;
   params?: Record<string, any>;
   method?:

@@ -10,7 +10,10 @@ export default defineConfig({
     modules: "src/modules/index.ts",
     types: "src/types/index.ts",
     ...Object.fromEntries(
-      ["checkout"].map((module) => [module, `src/modules/${module}/index.ts`])
+      ["checkout", "discount"].map((module) => [
+        module,
+        `src/modules/${module}/index.ts`,
+      ])
     ),
   },
   format: ["cjs", "esm"],

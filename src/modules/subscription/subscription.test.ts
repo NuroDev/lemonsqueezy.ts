@@ -24,4 +24,8 @@ describe("Subscription", () => {
     expect(Array.isArray(subscriptions.data)).toBe(true);
     expect(subscriptions.errors).toBeUndefined();
   });
+
+  it("Update subscription", async () => {
+    expect(true).toEqual(true);
+  });
 });

@@ -16,3 +16,4 @@ export {
   updateSubscription,
 } from "./subscription";
 export { getUser } from "./user";
+export { listAllVariants, retrieveVariant } from "./variant";

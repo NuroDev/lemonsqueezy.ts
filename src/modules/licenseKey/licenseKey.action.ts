@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllLicenseKeysOptions,
@@ -22,11 +22,19 @@ import type {
 export async function listAllLicenseKeys(
   options: ListAllLicenseKeysOptions & SharedModuleOptions
 ): Promise<ListAllLicenseKeysResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, orderId, orderItemId, productId, storeId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllLicenseKeys(rest);
+  return requestLemonSqueeze<ListAllLicenseKeysResult>({
+    apiKey,
+    params: {
+      ...(orderId ? { order_id: orderId } : {}),
+      ...(orderItemId ? { order_item_id: orderItemId } : {}),
+      ...(productId ? { product_id: productId } : {}),
+      ...(storeId ? { store_id: storeId } : {}),
+    },
+    path: "/license-keys",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +51,11 @@ export async function listAllLicenseKeys(
 export async function retrieveLicenseKey(
   options: RetrieveLicenseKeyOptions & SharedModuleOptions
 ): Promise<RetrieveLicenseKeyResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveLicenseKey(rest);
+  return requestLemonSqueeze<RetrieveLicenseKeyResult>({
+    apiKey,
+    path: `/license-keys/${id}`,
+    ...rest,
+  });
 }

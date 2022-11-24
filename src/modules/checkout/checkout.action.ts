@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   CreateCheckoutOptions,
@@ -22,11 +22,27 @@ import type {
 export async function createCheckout(
   options: CreateCheckoutOptions & SharedModuleOptions
 ): Promise<CreateCheckoutResult> {
-  const { apiKey, ...rest } = options;
+  const {
+    checkout_data,
+    checkout_options,
+    custom_price,
+    expires_at,
+    product_options,
+    ...rest
+  } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.createCheckout(rest);
+  return requestLemonSqueeze<CreateCheckoutResult>({
+    data: {
+      ...(checkout_data ? { checkout_data } : {}),
+      ...(checkout_options ? { checkout_options } : {}),
+      ...(custom_price ? { custom_price } : {}),
+      ...(expires_at ? { expires_at } : {}),
+      ...(product_options ? { product_options } : {}),
+    },
+    path: "/checkouts",
+    method: "POST",
+    ...rest,
+  });
 }
 
 /**
@@ -43,11 +59,16 @@ export async function createCheckout(
 export async function listAllCheckouts(
   options: ListAllCheckoutsOptions & SharedModuleOptions
 ): Promise<ListAllCheckoutsResult> {
-  const { apiKey, ...rest } = options;
+  const { storeId, variantId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllCheckouts(rest);
+  return requestLemonSqueeze<ListAllCheckoutsResult>({
+    params: {
+      ...(storeId ? { store_id: storeId } : {}),
+      ...(variantId ? { variant_id: variantId } : {}),
+    },
+    path: "/checkouts",
+    ...rest,
+  });
 }
 
 /**
@@ -64,9 +85,10 @@ export async function listAllCheckouts(
 export async function retrieveCheckout(
   options: RetrieveCheckoutOptions & SharedModuleOptions
 ): Promise<RetrieveCheckoutResult> {
-  const { apiKey, ...rest } = options;
+  const { id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveCheckout(rest);
+  return requestLemonSqueeze<RetrieveCheckoutResult>({
+    path: `/checkouts/${id}`,
+    ...rest,
+  });
 }

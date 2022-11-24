@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   GetUserOptions,
@@ -20,9 +20,8 @@ import type {
 export async function getUser(
   options: GetUserOptions & SharedModuleOptions
 ): Promise<GetUserResult> {
-  const { apiKey, ...rest } = options;
-
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.getUser(rest);
+  return requestLemonSqueeze<GetUserResult>({
+    path: "/users/me",
+    ...options,
+  });
 }

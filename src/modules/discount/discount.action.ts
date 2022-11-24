@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllDiscountsOptions,
@@ -22,11 +22,16 @@ import type {
 export async function listAllDiscounts(
   options: ListAllDiscountsOptions & SharedModuleOptions
 ): Promise<ListAllDiscountsResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, storeId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllDiscounts(rest);
+  return await requestLemonSqueeze<ListAllDiscountsResult>({
+    apiKey,
+    params: {
+      ...(storeId ? { store_id: storeId } : {}),
+    },
+    path: "/discounts",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +48,11 @@ export async function listAllDiscounts(
 export async function retrieveDiscount(
   options: RetrieveDiscountOptions & SharedModuleOptions
 ): Promise<RetrieveDiscountResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveDiscount(rest);
+  return requestLemonSqueeze<RetrieveDiscountResult>({
+    apiKey,
+    path: `/discounts/${id}`,
+    ...rest,
+  });
 }

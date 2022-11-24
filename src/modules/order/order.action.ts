@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllOrdersOptions,
@@ -22,11 +22,17 @@ import type {
 export async function listAllOrders(
   options: ListAllOrdersOptions & SharedModuleOptions
 ): Promise<ListAllOrdersResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, storeId, userEmail, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllOrders(rest);
+  return requestLemonSqueeze<ListAllOrdersResult>({
+    apiKey,
+    params: {
+      ...(storeId ? { store_id: storeId } : {}),
+      ...(userEmail ? { user_email: userEmail } : {}),
+    },
+    path: "/orders",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +49,11 @@ export async function listAllOrders(
 export async function retrieveOrder(
   options: RetrieveOrderOptions & SharedModuleOptions
 ): Promise<RetrieveOrderResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveOrder(rest);
+  return requestLemonSqueeze<RetrieveOrderResult>({
+    apiKey,
+    path: `/orders/${id}`,
+    ...rest,
+  });
 }

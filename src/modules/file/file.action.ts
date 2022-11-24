@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllFilesOptions,
@@ -22,11 +22,16 @@ import type {
 export async function listAllFiles(
   options: ListAllFilesOptions & SharedModuleOptions
 ): Promise<ListAllFilesResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, variantId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllFiles(rest);
+  return requestLemonSqueeze<ListAllFilesResult>({
+    apiKey,
+    params: {
+      ...(variantId ? { variant_id: variantId } : {}),
+    },
+    path: "/files",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +48,11 @@ export async function listAllFiles(
 export async function retrieveFile(
   options: RetrieveFileOptions & SharedModuleOptions
 ): Promise<RetrieveFileResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveFile(rest);
+  return requestLemonSqueeze<RetrieveFileResult>({
+    apiKey,
+    path: `/files/${id}`,
+    ...rest,
+  });
 }

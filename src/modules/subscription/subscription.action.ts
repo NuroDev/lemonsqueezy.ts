@@ -1,4 +1,5 @@
-import { Lemonsqueezy } from "~/client";
+import { LemonsqueezyDataType } from "~/types";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllSubscriptionsOptions,
@@ -24,11 +25,28 @@ import type {
 export async function listAllSubscriptions(
   options: ListAllSubscriptionsOptions & SharedModuleOptions
 ): Promise<ListAllSubscriptionsResult> {
-  const { apiKey, ...rest } = options;
+  const {
+    apiKey,
+    orderId,
+    orderItemId,
+    productId,
+    storeId,
+    variantId,
+    ...rest
+  } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllSubscriptions(rest);
+  return requestLemonSqueeze<ListAllSubscriptionsResult>({
+    apiKey,
+    params: {
+      ...(orderId ? { order_id: orderId } : {}),
+      ...(orderItemId ? { order_item_id: orderItemId } : {}),
+      ...(productId ? { product_id: productId } : {}),
+      ...(storeId ? { store_id: storeId } : {}),
+      ...(variantId ? { variant_id: variantId } : {}),
+    },
+    path: "/subscriptions",
+    ...rest,
+  });
 }
 
 /**
@@ -45,11 +63,13 @@ export async function listAllSubscriptions(
 export async function retrieveSubscription(
   options: RetrieveSubscriptionOptions & SharedModuleOptions
 ): Promise<RetrieveSubscriptionResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveSubscription(rest);
+  return requestLemonSqueeze<RetrieveSubscriptionResult>({
+    apiKey,
+    path: `/subscriptions/${id}`,
+    ...rest,
+  });
 }
 
 /**
@@ -83,9 +103,34 @@ export async function retrieveSubscription(
 export async function updateSubscription(
   options: UpdateSubscriptionOptions & SharedModuleOptions
 ): Promise<UpdateSubscriptionResult> {
-  const { apiKey, ...rest } = options;
+  const {
+    apiKey,
+    billingAnchor,
+    cancelled,
+    id,
+    pause,
+    productId,
+    variantId,
+    ...rest
+  } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.updateSubscription(rest);
+  return requestLemonSqueeze<UpdateSubscriptionResult>({
+    apiKey,
+    data: {
+      data: {
+        attributes: {
+          billing_anchor: billingAnchor,
+          cancelled,
+          pause,
+          product_id: productId,
+          variant_id: variantId,
+        },
+        id,
+        type: LemonsqueezyDataType.SUBSCRIPTIONS,
+      },
+    },
+    path: `/subscriptions/${id}`,
+    method: "PATCH",
+    ...rest,
+  });
 }

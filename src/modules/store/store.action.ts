@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllStoresOptions,
@@ -22,11 +22,10 @@ import type {
 export async function listAllStores(
   options: ListAllStoresOptions & SharedModuleOptions
 ): Promise<ListAllStoresResult> {
-  const { apiKey, ...rest } = options;
-
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllStores(rest);
+  return requestLemonSqueeze<ListAllStoresResult>({
+    path: "/stores",
+    ...options,
+  });
 }
 
 /**
@@ -43,9 +42,11 @@ export async function listAllStores(
 export async function retrieveStore(
   options: RetrieveStoreOptions & SharedModuleOptions
 ): Promise<RetrieveStoreResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveStore(rest);
+  return requestLemonSqueeze<RetrieveStoreResult>({
+    apiKey,
+    path: `/stores/${id}`,
+    ...rest,
+  });
 }

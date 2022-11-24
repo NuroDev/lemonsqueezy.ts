@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllProductsOptions,
@@ -22,11 +22,16 @@ import type {
 export async function listAllProducts(
   options: ListAllProductsOptions & SharedModuleOptions
 ): Promise<ListAllProductsResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, storeId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllProducts(rest);
+  return requestLemonSqueeze<ListAllProductsResult>({
+    apiKey,
+    params: {
+      ...(storeId ? { store_id: storeId } : {}),
+    },
+    path: "/products",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +48,11 @@ export async function listAllProducts(
 export async function retrieveProduct(
   options: RetrieveProductOptions & SharedModuleOptions
 ): Promise<RetrieveProductResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveProduct(rest);
+  return requestLemonSqueeze<RetrieveProductResult>({
+    apiKey,
+    path: `/products/${id}`,
+    ...rest,
+  });
 }

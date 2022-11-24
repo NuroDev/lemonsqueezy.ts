@@ -1,4 +1,4 @@
-import { Lemonsqueezy } from "~/client";
+import { requestLemonSqueeze } from "~/request";
 
 import type {
   ListAllVariantsOptions,
@@ -22,11 +22,16 @@ import type {
 export async function listAllVariants(
   options: ListAllVariantsOptions & SharedModuleOptions
 ): Promise<ListAllVariantsResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, productId, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.listAllVariants(rest);
+  return requestLemonSqueeze<ListAllVariantsResult>({
+    apiKey,
+    params: {
+      ...(productId ? { product_id: productId } : {}),
+    },
+    path: "/variants",
+    ...rest,
+  });
 }
 
 /**
@@ -43,9 +48,11 @@ export async function listAllVariants(
 export async function retrieveVariant(
   options: RetrieveVariantOptions & SharedModuleOptions
 ): Promise<RetrieveVariantResult> {
-  const { apiKey, ...rest } = options;
+  const { apiKey, id, ...rest } = options;
 
-  const client = new Lemonsqueezy(apiKey);
-
-  return await client.retrieveVariant(rest);
+  return requestLemonSqueeze<RetrieveVariantResult>({
+    apiKey,
+    path: `/variants/${id}`,
+    ...rest,
+  });
 }

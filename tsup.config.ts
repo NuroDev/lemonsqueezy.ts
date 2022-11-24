@@ -19,6 +19,7 @@ export default defineConfig({
         "order",
         "orderItem",
         "product",
+        "store",
       ].map((module) => [module, `src/modules/${module}/index.ts`])
     ),
   },

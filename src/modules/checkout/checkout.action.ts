@@ -1,4 +1,4 @@
-import { requestLemonSqueeze } from "~/request";
+import { requestLemonSqueeze } from "~/shared";
 
 import type {
   CreateCheckoutOptions,
@@ -8,7 +8,7 @@ import type {
   RetrieveCheckoutOptions,
   RetrieveCheckoutResult,
 } from "./checkout.types";
-import type { SharedModuleOptions } from "~/types";
+import type { SharedModuleOptions } from "~/shared";
 
 /**
  * Create checkout

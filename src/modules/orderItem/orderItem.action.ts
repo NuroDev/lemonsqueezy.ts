@@ -1,4 +1,4 @@
-import { requestLemonSqueeze } from "~/request";
+import { requestLemonSqueeze } from "~/shared";
 
 import type {
   ListAllOrderItemsOptions,
@@ -6,7 +6,7 @@ import type {
   RetrieveOrderItemOptions,
   RetrieveOrderItemResult,
 } from "./orderItem.types";
-import type { SharedModuleOptions } from "~/types/shared";
+import type { SharedModuleOptions } from "~/shared";
 
 /**
  * List all order items

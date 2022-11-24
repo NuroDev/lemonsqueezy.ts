@@ -6,6 +6,20 @@ import {
 
 export { createCheckout, listAllCheckouts, retrieveCheckout };
 
+export type {
+  CreateCheckoutOptions,
+  CreateCheckoutResult,
+  LemonsqueezyBillingAddress,
+  LemonsqueezyCheckout,
+  LemonsqueezyCheckoutData,
+  LemonsqueezyCheckoutOptions,
+  LemonsqueezyProductOptions,
+  ListAllCheckoutsOptions,
+  ListAllCheckoutsResult,
+  RetrieveCheckoutOptions,
+  RetrieveCheckoutResult,
+} from "./checkout.types";
+
 export default {
   createCheckout,
   listAllCheckouts,

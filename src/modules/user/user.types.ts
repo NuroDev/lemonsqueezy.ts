@@ -2,7 +2,7 @@ import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyDataType,
   SharedLemonsqueezyOptions,
-} from "~/types/shared";
+} from "~/shared";
 
 /**
  * @docs https://docs.lemonsqueezy.com/api/users#the-user-object

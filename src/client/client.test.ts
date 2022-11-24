@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 
 import "dotenv/config";
 
-import { Lemonsqueezy } from ".";
+import { Lemonsqueezy } from "./client.class";
 
 describe("Client", () => {
   const { LEMON_SQUEEZY_API_KEY } = process.env;

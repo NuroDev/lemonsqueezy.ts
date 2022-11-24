@@ -68,14 +68,6 @@ export type {
   RetrieveProductResult,
 } from "~/modules/product/product.types";
 
-export { LemonsqueezyDataType } from "./shared";
-export type {
-  BaseLemonsqueezyResponse,
-  LemonsqueezyOptions,
-  PaginatedBaseLemonsqueezyResponse,
-  SharedModuleOptions,
-} from "./shared";
-
 export type {
   LemonsqueezyStore,
   ListAllStoresOptions,
@@ -107,4 +99,4 @@ export type {
   ListAllVariantsResult,
   RetrieveVariantOptions,
   RetrieveVariantResult,
-} from "~/modules/variant/variants.types";
+} from "~/modules/variant/variant.types";

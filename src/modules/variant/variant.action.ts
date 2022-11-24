@@ -1,12 +1,12 @@
-import { requestLemonSqueeze } from "~/request";
+import { requestLemonSqueeze } from "~/shared";
 
 import type {
   ListAllVariantsOptions,
   ListAllVariantsResult,
   RetrieveVariantOptions,
   RetrieveVariantResult,
-} from "./variants.types";
-import type { SharedModuleOptions } from "~/types/shared";
+} from "./variant.types";
+import type { SharedModuleOptions } from "~/shared";
 
 /**
  * List all variants

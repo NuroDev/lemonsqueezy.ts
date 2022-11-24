@@ -5,6 +5,14 @@ import {
 
 export { listAllLicenseKeyInstances, retrieveLicenseKeyInstance };
 
+export type {
+  LemonsqueezyLicenseKeyInstance,
+  ListAllLicenseKeyInstancesOptions,
+  ListAllLicenseKeyInstancesResult,
+  RetrieveLicenseKeyInstanceOptions,
+  RetrieveLicenseKeyInstanceResult,
+} from "./licenseKeyInstance.types";
+
 export default {
   listAllLicenseKeyInstances,
   retrieveLicenseKeyInstance,

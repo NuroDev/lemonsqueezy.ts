@@ -1,13 +1,10 @@
-import { LemonsqueezyDataType } from "./types";
-import { requestLemonSqueeze } from "./request";
+import { LemonsqueezyDataType, requestLemonSqueeze } from "~/shared";
 
 import type {
-  BaseLemonsqueezyResponse,
   CreateCheckoutOptions,
   CreateCheckoutResult,
   GetUserOptions,
   GetUserResult,
-  LemonsqueezyOptions,
   ListAllCheckoutsOptions,
   ListAllCheckoutsResult,
   ListAllDiscountsOptions,
@@ -30,7 +27,6 @@ import type {
   ListAllSubscriptionsResult,
   ListAllVariantsOptions,
   ListAllVariantsResult,
-  PaginatedBaseLemonsqueezyResponse,
   RetrieveCheckoutOptions,
   RetrieveCheckoutResult,
   RetrieveDiscountOptions,
@@ -55,7 +51,12 @@ import type {
   RetrieveVariantResult,
   UpdateSubscriptionOptions,
   UpdateSubscriptionResult,
-} from "./types";
+} from "~/modules";
+import type {
+  BaseLemonsqueezyResponse,
+  LemonsqueezyOptions,
+  PaginatedBaseLemonsqueezyResponse,
+} from "~/shared";
 
 export class Lemonsqueezy {
   private _apiKey: string;

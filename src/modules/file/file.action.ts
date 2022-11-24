@@ -1,4 +1,4 @@
-import { requestLemonSqueeze } from "~/request";
+import { requestLemonSqueeze } from "~/shared";
 
 import type {
   ListAllFilesOptions,
@@ -6,7 +6,7 @@ import type {
   RetrieveFileOptions,
   RetrieveFileResult,
 } from "./file.types";
-import type { SharedModuleOptions } from "~/types";
+import type { SharedModuleOptions } from "~/shared";
 
 /**
  * List all files

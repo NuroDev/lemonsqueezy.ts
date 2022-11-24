@@ -5,7 +5,7 @@ import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyOptions,
   PaginatedBaseLemonsqueezyResponse,
-} from "./types";
+} from "~/shared";
 
 export async function requestLemonSqueeze<
   TResponse extends

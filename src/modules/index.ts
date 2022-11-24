@@ -7,3 +7,4 @@ export {
   retrieveLicenseKeyInstance,
 } from "./licenseKeyInstance";
 export { listAllOrders, retrieveOrder } from "./order";
+export { listAllOrderItems, retrieveOrderItem } from "./orderItem";

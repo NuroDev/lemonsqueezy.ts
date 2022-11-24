@@ -32,22 +32,106 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
+    "./checkout": {
+      "import": "./dist/modules/checkout.mjs",
+      "require": "./dist/modules/checkout.js"
+    },
+    "./discount": {
+      "import": "./dist/modules/discount.mjs",
+      "require": "./dist/modules/discount.js"
+    },
+    "./file": {
+      "import": "./dist/modules/file.mjs",
+      "require": "./dist/modules/file.js"
+    },
+    "./licenseKey": {
+      "import": "./dist/modules/licenseKey.mjs",
+      "require": "./dist/modules/licenseKey.js"
+    },
+    "./licenseKeyInstance": {
+      "import": "./dist/modules/licenseKeyInstance.mjs",
+      "require": "./dist/modules/licenseKeyInstance.js"
+    },
     "./modules": {
-      "import": "./dist/modules.mjs",
-      "require": "./dist/modules.js"
+      "import": "./dist/modules/index.mjs",
+      "require": "./dist/modules/index.js"
+    },
+    "./order": {
+      "import": "./dist/modules/order.mjs",
+      "require": "./dist/modules/order.js"
+    },
+    "./orderItem": {
+      "import": "./dist/modules/orderItem.mjs",
+      "require": "./dist/modules/orderItem.js"
+    },
+    "./product": {
+      "import": "./dist/modules/product.mjs",
+      "require": "./dist/modules/product.js"
+    },
+    "./store": {
+      "import": "./dist/modules/store.mjs",
+      "require": "./dist/modules/store.js"
+    },
+    "./subscription": {
+      "import": "./dist/modules/subscription.mjs",
+      "require": "./dist/modules/subscription.js"
     },
     "./types": {
       "import": "./dist/types.mjs",
       "require": "./dist/types.js"
+    },
+    "./user": {
+      "import": "./dist/modules/user.mjs",
+      "require": "./dist/modules/user.js"
+    },
+    "./variant": {
+      "import": "./dist/modules/variant.mjs",
+      "require": "./dist/modules/variant.js"
     }
   },
   "typesVersions": {
     "*": {
+      "checkout": [
+        "./dist/modules/checkout.d.ts"
+      ],
+      "discount": [
+        "./dist/modules/discount.d.ts"
+      ],
+      "file": [
+        "./dist/modules/file.d.ts"
+      ],
+      "licenseKey": [
+        "./dist/modules/licenseKey.d.ts"
+      ],
+      "licenseKeyInstance": [
+        "./dist/modules/licenseKeyInstance.d.ts"
+      ],
       "modules": [
-        "./dist/modules.d.ts"
+        "./dist/modules/index.d.ts"
+      ],
+      "order": [
+        "./dist/modules/order.d.ts"
+      ],
+      "orderItem": [
+        "./dist/modules/orderItem.d.ts"
+      ],
+      "product": [
+        "./dist/modules/product.d.ts"
+      ],
+      "store": [
+        "./dist/modules/store.d.ts"
+      ],
+      "subscription": [
+        "./dist/modules/subscription.d.ts"
       ],
       "types": [
         "./dist/types.d.ts"
+      ],
+      "user": [
+        "./dist/modules/user.d.ts"
+      ],
+      "variant": [
+        "./dist/modules/variant.d.ts"
       ]
     }
   },

@@ -5,8 +5,8 @@ import type {
   ListAllOrderItemsResult,
   RetrieveOrderItemOptions,
   RetrieveOrderItemResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./orderItem.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all order items

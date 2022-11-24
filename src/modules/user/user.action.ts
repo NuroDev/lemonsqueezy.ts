@@ -1,10 +1,7 @@
 import { requestLemonSqueeze } from "~/request";
 
-import type {
-  GetUserOptions,
-  GetUserResult,
-  SharedModuleOptions,
-} from "~/types";
+import type { GetUserOptions, GetUserResult } from "./user.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * Get User

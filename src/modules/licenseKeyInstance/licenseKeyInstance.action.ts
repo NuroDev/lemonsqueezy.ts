@@ -5,8 +5,8 @@ import type {
   ListAllLicenseKeyInstancesResult,
   RetrieveLicenseKeyInstanceOptions,
   RetrieveLicenseKeyInstanceResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./licenseKeyInstance.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all license key instances

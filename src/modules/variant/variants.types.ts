@@ -3,7 +3,7 @@ import type {
   LemonsqueezyDataType,
   PaginatedBaseLemonsqueezyResponse,
   SharedLemonsqueezyOptions,
-} from "./shared";
+} from "~/types/shared";
 
 export type LemonsqueezyInterval = "day" | "week" | "month" | "year";
 

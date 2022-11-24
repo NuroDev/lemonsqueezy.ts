@@ -5,8 +5,8 @@ import type {
   ListAllVariantsResult,
   RetrieveVariantOptions,
   RetrieveVariantResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./variants.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all variants

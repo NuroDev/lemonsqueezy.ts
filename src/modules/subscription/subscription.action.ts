@@ -6,10 +6,10 @@ import type {
   ListAllSubscriptionsResult,
   RetrieveSubscriptionOptions,
   RetrieveSubscriptionResult,
-  SharedModuleOptions,
   UpdateSubscriptionOptions,
   UpdateSubscriptionResult,
-} from "~/types";
+} from "./subscription.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all subscriptions

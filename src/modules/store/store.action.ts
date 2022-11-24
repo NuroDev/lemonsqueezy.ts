@@ -5,8 +5,8 @@ import type {
   ListAllStoresResult,
   RetrieveStoreOptions,
   RetrieveStoreResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./store.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all stores

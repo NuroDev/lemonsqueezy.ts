@@ -5,8 +5,8 @@ import type {
   ListAllProductsResult,
   RetrieveProductOptions,
   RetrieveProductResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./product.types";
+import type { SharedModuleOptions } from "~/types/shared";
 
 /**
  * List all products

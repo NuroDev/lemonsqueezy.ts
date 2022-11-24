@@ -3,7 +3,7 @@ import type {
   LemonsqueezyDataType,
   PaginatedBaseLemonsqueezyResponse,
   SharedLemonsqueezyOptions,
-} from "./shared";
+} from "~/types/shared";
 
 /**
  * @docs https://docs.lemonsqueezy.com/api/discounts#the-discount-object

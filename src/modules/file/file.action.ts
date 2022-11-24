@@ -5,8 +5,8 @@ import type {
   ListAllFilesResult,
   RetrieveFileOptions,
   RetrieveFileResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./file.types";
+import type { SharedModuleOptions } from "~/types";
 
 /**
  * List all files

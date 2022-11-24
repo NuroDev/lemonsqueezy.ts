@@ -7,8 +7,8 @@ import type {
   ListAllCheckoutsResult,
   RetrieveCheckoutOptions,
   RetrieveCheckoutResult,
-  SharedModuleOptions,
-} from "~/types";
+} from "./checkout.types";
+import type { SharedModuleOptions } from "~/types";
 
 /**
  * Create checkout

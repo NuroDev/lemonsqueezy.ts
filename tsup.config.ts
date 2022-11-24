@@ -18,6 +18,7 @@ export default defineConfig({
         "licenseKeyInstance",
         "order",
         "orderItem",
+        "product",
       ].map((module) => [module, `src/modules/${module}/index.ts`])
     ),
   },

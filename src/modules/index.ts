@@ -8,3 +8,4 @@ export {
 } from "./licenseKeyInstance";
 export { listAllOrders, retrieveOrder } from "./order";
 export { listAllOrderItems, retrieveOrderItem } from "./orderItem";
+export { listAllProducts, retrieveProduct } from "./product";

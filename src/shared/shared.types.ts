@@ -1,4 +1,4 @@
-import type { RequestInit } from "node-fetch";
+import type { RequestInit } from "undici";
 
 export interface SharedModuleOptions {
   apiKey: string;

@@ -144,7 +144,7 @@
     "test:ui": "vitest watch --ui"
   },
   "dependencies": {
-    "node-fetch": "^3.3.0"
+    "undici": "^5.13.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.35",

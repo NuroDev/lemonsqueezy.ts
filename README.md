@@ -18,7 +18,7 @@
   
 [![Package Version](https://img.shields.io/npm/v/lemonsqueezy.ts?label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
 [![Package Monthly Downloads](https://img.shields.io/npm/dm/lemonsqueezy.ts?color=blue&label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
-[![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://github.com/nurodev/lemonsqueezy.ts)
+[![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://docs.lemonsqueezy.com/api)
 
   </sup>
   <br />
@@ -48,128 +48,29 @@ Create a new client instance with your API key
 import { Lemonsqueezy } from "lemonsqueezy.ts";
 
 const client = new Lemonsqueezy("YOUR_API_KEY");
-```
 
-#### 🛒 Checkout
-
-```typescript
-const newCheckout = await client.createCheckout({
-  // ...
-});
-
-const checkout = await client.retrieveCheckout({
-  id: "...",
-});
-
-const checkouts = await client.listAllCheckouts();
-```
-
-#### 🔖 Discount
-
-```typescript
-const discount = await client.retrieveDiscount({
-  id: "...",
-});
-
-const discounts = await client.listAllDiscounts();
-```
-
-#### 📄 File
-
-```typescript
-const file = await client.retrieveFile({
-  id: "...",
-});
-
-const files = await client.listAllFiles();
-```
-
-#### 🔑 License key
-
-```typescript
-const licenseKey = await client.retrieveLicenseKey({
-  id: "...",
-});
-
-const licenseKeys = await client.listAllLicenseKeys();
-```
-
-#### 🥇 License key instance
-
-```typescript
-const licenseKeyInstance = await client.retrieveLicenseKeyInstance({
-  id: "...",
-});
-
-const licenseKeyInstances = await client.listAllLicenseKeyInstances();
-```
-
-#### 🧾 Order
-
-```typescript
-const order = await client.retrieveOrder({
-  id: "...",
-});
-
-const orders = await client.listAllOrders();
-```
-
-#### 📦 Order Item
-
-```typescript
-const orderItem = await client.retrieveOrderItem({
-  id: "...",
-});
-
-const orderItems = await client.listAllOrderItems();
-```
-
-#### 💎 Product
-
-```typescript
-const product = await client.retrieveProduct({
-  id: "...",
-});
-
-const products = await client.listAllProducts();
-```
-
-#### 🏪 Store
-
-```typescript
-const store = await client.retrieveStore({
-  id: "...",
-});
+const user = await client.getUser();
+// => { attributes: { ... }, id: "1", links: { self: "..." }, type: 'users' }
 
 const stores = await client.listAllStores();
+// => [{ attributes: { ... }, id: "1", type: "stores" }]
+
+// And many many more...
 ```
 
-#### ♻️ Subscription
+## 📚 Documentation
 
-```typescript
-const updatedSubscription = await client.updateSubscription({
-  // ...
-});
+To view the documentation on how to use each module, view the README.md for each module:
 
-const subscription = await client.retrieveSubscription({
-  id: "...",
-});
-
-const subscriptions = await client.listAllSubscriptions();
-```
-
-#### 🧘 User
-
-```typescript
-const user = await client.getUser();
-```
-
-#### 🧟 Variant
-
-```typescript
-const variant = await client.retrieveVariant({
-  id: "...",
-});
-
-const variants = await client.listAllVariants();
-```
+- [🛒 Checkout](src/modules/checkout/README.md)
+- [🔖 Discount](src/modules/discount/README.md)
+- [📄 File](src/modules/file/README.md)
+- [🔑 License key](src/modules/licenseKey/README.md)
+- [🥇 License key instance](src/modules/licenseKeyInstance/README.md)
+- [🧾 Order](src/modules/order/README.md)
+- [📦 Order Item](src/modules/orderItem/README.md)
+- [💎 Product](src/modules/product/README.md)
+- [🏪 Store](src/modules/store/README.md)
+- [♻️ Subscription](src/modules/subscription/README.md)
+- [🧘 User](src/modules/user/README.md)
+- [🧟 Variant](src/modules/variant/README.md)

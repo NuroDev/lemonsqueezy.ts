@@ -1,62 +1,55 @@
-import { LemonsqueezyDataType, requestLemonSqueeze } from "~/shared";
-
-import type {
+import {
+  createCheckout,
   CreateCheckoutOptions,
-  CreateCheckoutResult,
+  getUser,
   GetUserOptions,
-  GetUserResult,
+  listAllCheckouts,
   ListAllCheckoutsOptions,
-  ListAllCheckoutsResult,
+  listAllDiscounts,
   ListAllDiscountsOptions,
-  ListAllDiscountsResult,
+  listAllFiles,
   ListAllFilesOptions,
-  ListAllFilesResult,
+  listAllLicenseKeyInstances,
   ListAllLicenseKeyInstancesOptions,
-  ListAllLicenseKeyInstancesResult,
+  listAllLicenseKeys,
   ListAllLicenseKeysOptions,
-  ListAllLicenseKeysResult,
+  listAllOrderItems,
   ListAllOrderItemsOptions,
-  ListAllOrderItemsResult,
+  listAllOrders,
   ListAllOrdersOptions,
-  ListAllOrdersResult,
+  listAllProducts,
   ListAllProductsOptions,
-  ListAllProductsResult,
+  listAllStores,
   ListAllStoresOptions,
-  ListAllStoresResult,
+  listAllSubscriptions,
   ListAllSubscriptionsOptions,
-  ListAllSubscriptionsResult,
+  listAllVariants,
   ListAllVariantsOptions,
-  ListAllVariantsResult,
+  retrieveCheckout,
   RetrieveCheckoutOptions,
-  RetrieveCheckoutResult,
+  retrieveDiscount,
   RetrieveDiscountOptions,
-  RetrieveDiscountResult,
+  retrieveFile,
   RetrieveFileOptions,
-  RetrieveFileResult,
+  retrieveLicenseKey,
+  retrieveLicenseKeyInstance,
   RetrieveLicenseKeyInstanceOptions,
-  RetrieveLicenseKeyInstanceResult,
   RetrieveLicenseKeyOptions,
-  RetrieveLicenseKeyResult,
+  retrieveOrder,
+  retrieveOrderItem,
   RetrieveOrderItemOptions,
-  RetrieveOrderItemResult,
   RetrieveOrderOptions,
-  RetrieveOrderResult,
+  retrieveProduct,
   RetrieveProductOptions,
-  RetrieveProductResult,
+  retrieveStore,
   RetrieveStoreOptions,
-  RetrieveStoreResult,
+  retrieveSubscription,
   RetrieveSubscriptionOptions,
-  RetrieveSubscriptionResult,
+  retrieveVariant,
   RetrieveVariantOptions,
-  RetrieveVariantResult,
+  updateSubscription,
   UpdateSubscriptionOptions,
-  UpdateSubscriptionResult,
 } from "~/modules";
-import type {
-  BaseLemonsqueezyResponse,
-  LemonsqueezyOptions,
-  PaginatedBaseLemonsqueezyResponse,
-} from "~/shared";
 
 export class LemonsqueezyClient {
   private _apiKey: string;
@@ -77,8 +70,8 @@ export class LemonsqueezyClient {
    * @returns A user object
    */
   public async getUser(options: GetUserOptions = {}) {
-    return this._request<GetUserResult>({
-      path: "/users/me",
+    return getUser({
+      apiKey: this._apiKey,
       ...options,
     });
   }
@@ -95,11 +88,9 @@ export class LemonsqueezyClient {
    * @returns A store object
    */
   public async retrieveStore(options: RetrieveStoreOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveStoreResult>({
-      path: `/stores/${id}`,
-      ...rest,
+    return retrieveStore({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -115,8 +106,8 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of `store` objects ordered by name
    */
   public async listAllStores(options: ListAllStoresOptions = {}) {
-    return this._request<ListAllStoresResult>({
-      path: "/stores",
+    return listAllStores({
+      apiKey: this._apiKey,
       ...options,
     });
   }
@@ -133,11 +124,9 @@ export class LemonsqueezyClient {
    * @returns A product object
    */
   public async retrieveProduct(options: RetrieveProductOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveProductResult>({
-      path: `/products/${id}`,
-      ...rest,
+    return retrieveProduct({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -153,14 +142,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of product objects ordered by `name`
    */
   public async listAllProducts(options: ListAllProductsOptions = {}) {
-    const { storeId, ...rest } = options;
-
-    return this._request<ListAllProductsResult>({
-      params: {
-        ...(storeId ? { store_id: storeId } : {}),
-      },
-      path: "/products",
-      ...rest,
+    return listAllProducts({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -176,11 +160,9 @@ export class LemonsqueezyClient {
    * @returns A variant object
    */
   public async retrieveVariant(options: RetrieveVariantOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveVariantResult>({
-      path: `/variants/${id}`,
-      ...rest,
+    return retrieveVariant({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -196,14 +178,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of variant objects ordered by sort
    */
   public async listAllVariants(options: ListAllVariantsOptions = {}) {
-    const { productId, ...rest } = options;
-
-    return this._request<ListAllVariantsResult>({
-      params: {
-        ...(productId ? { product_id: productId } : {}),
-      },
-      path: "/variants",
-      ...rest,
+    return listAllVariants({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -219,11 +196,9 @@ export class LemonsqueezyClient {
    * @returns A file object
    */
   public async retrieveFile(options: RetrieveFileOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveFileResult>({
-      path: `/files/${id}`,
-      ...rest,
+    return retrieveFile({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -239,14 +214,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of file objects ordered by `sort`
    */
   public async listAllFiles(options: ListAllFilesOptions = {}) {
-    const { variantId, ...rest } = options;
-
-    return this._request<ListAllFilesResult>({
-      params: {
-        ...(variantId ? { variant_id: variantId } : {}),
-      },
-      path: "/files",
-      ...rest,
+    return listAllFiles({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -262,11 +232,9 @@ export class LemonsqueezyClient {
    * @returns A order object
    */
   public async retrieveOrder(options: RetrieveOrderOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveOrderResult>({
-      path: `/orders/${id}`,
-      ...rest,
+    return retrieveOrder({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -282,15 +250,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of file objects ordered by `sort`
    */
   public async listAllOrders(options: ListAllOrdersOptions = {}) {
-    const { storeId, userEmail, ...rest } = options;
-
-    return this._request<ListAllOrdersResult>({
-      params: {
-        ...(storeId ? { store_id: storeId } : {}),
-        ...(userEmail ? { user_email: userEmail } : {}),
-      },
-      path: "/orders",
-      ...rest,
+    return listAllOrders({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -306,11 +268,9 @@ export class LemonsqueezyClient {
    * @returns A order item object
    */
   public async retrieveOrderItem(options: RetrieveOrderItemOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveOrderItemResult>({
-      path: `/order-items/${id}`,
-      ...rest,
+    return retrieveOrderItem({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -326,16 +286,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of order item objects ordered by `id`
    */
   public async listAllOrderItems(options: ListAllOrderItemsOptions = {}) {
-    const { orderId, productId, variantId, ...rest } = options;
-
-    return this._request<ListAllOrderItemsResult>({
-      params: {
-        ...(orderId ? { order_id: orderId } : {}),
-        ...(productId ? { product_id: productId } : {}),
-        ...(variantId ? { variant_id: variantId } : {}),
-      },
-      path: "/order-items",
-      ...rest,
+    return listAllOrderItems({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -351,11 +304,9 @@ export class LemonsqueezyClient {
    * @returns A subscription object
    */
   public async retrieveSubscription(options: RetrieveSubscriptionOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveSubscriptionResult>({
-      path: `/subscriptions/${id}`,
-      ...rest,
+    return retrieveSubscription({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -371,19 +322,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of subscription objects ordered by `created_at` (descending)
    */
   public async listAllSubscriptions(options: ListAllSubscriptionsOptions = {}) {
-    const { orderId, orderItemId, productId, storeId, variantId, ...rest } =
-      options;
-
-    return this._request<ListAllSubscriptionsResult>({
-      params: {
-        ...(orderId ? { order_id: orderId } : {}),
-        ...(orderItemId ? { order_item_id: orderItemId } : {}),
-        ...(productId ? { product_id: productId } : {}),
-        ...(storeId ? { store_id: storeId } : {}),
-        ...(variantId ? { variant_id: variantId } : {}),
-      },
-      path: "/subscriptions",
-      ...rest,
+    return listAllSubscriptions({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -416,33 +357,9 @@ export class LemonsqueezyClient {
    * @returns A subscription object
    */
   public async updateSubscription(options: UpdateSubscriptionOptions) {
-    const {
-      billingAnchor,
-      cancelled,
-      id,
-      pause,
-      productId,
-      variantId,
-      ...rest
-    } = options;
-
-    return this._request<UpdateSubscriptionResult>({
-      data: {
-        data: {
-          attributes: {
-            billing_anchor: billingAnchor,
-            cancelled,
-            pause,
-            product_id: productId,
-            variant_id: variantId,
-          },
-          id,
-          type: LemonsqueezyDataType.subscriptions,
-        },
-      },
-      path: `/subscriptions/${id}`,
-      method: "PATCH",
-      ...rest,
+    return updateSubscription({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -458,11 +375,9 @@ export class LemonsqueezyClient {
    * @returns A discount object
    */
   public async retrieveDiscount(options: RetrieveDiscountOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveDiscountResult>({
-      path: `/discounts/${id}`,
-      ...rest,
+    return retrieveDiscount({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -478,14 +393,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of discount objects ordered by `created_at`
    */
   public async listAllDiscounts(options: ListAllDiscountsOptions = {}) {
-    const { storeId, ...rest } = options;
-
-    return this._request<ListAllDiscountsResult>({
-      params: {
-        ...(storeId ? { store_id: storeId } : {}),
-      },
-      path: "/discounts",
-      ...rest,
+    return listAllDiscounts({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -501,11 +411,9 @@ export class LemonsqueezyClient {
    * @returns A license key object
    */
   public async retrieveLicenseKey(options: RetrieveLicenseKeyOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveLicenseKeyResult>({
-      path: `/license-keys/${id}`,
-      ...rest,
+    return retrieveLicenseKey({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -521,17 +429,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of license key objects ordered by `id`
    */
   public async listAllLicenseKeys(options: ListAllLicenseKeysOptions = {}) {
-    const { orderId, orderItemId, productId, storeId, ...rest } = options;
-
-    return this._request<ListAllLicenseKeysResult>({
-      params: {
-        ...(orderId ? { order_id: orderId } : {}),
-        ...(orderItemId ? { order_item_id: orderItemId } : {}),
-        ...(productId ? { product_id: productId } : {}),
-        ...(storeId ? { store_id: storeId } : {}),
-      },
-      path: "/license-keys",
-      ...rest,
+    return listAllLicenseKeys({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -549,11 +449,9 @@ export class LemonsqueezyClient {
   public async retrieveLicenseKeyInstance(
     options: RetrieveLicenseKeyInstanceOptions
   ) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveLicenseKeyInstanceResult>({
-      path: `/license-key-instances/${id}`,
-      ...rest,
+    return retrieveLicenseKeyInstance({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -571,14 +469,9 @@ export class LemonsqueezyClient {
   public async listAllLicenseKeyInstances(
     options: ListAllLicenseKeyInstancesOptions = {}
   ) {
-    const { licenseKeyId, ...rest } = options;
-
-    return this._request<ListAllLicenseKeyInstancesResult>({
-      params: {
-        ...(licenseKeyId ? { license_key_id: licenseKeyId } : {}),
-      },
-      path: "/license-key-instances",
-      ...rest,
+    return listAllLicenseKeyInstances({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -594,11 +487,9 @@ export class LemonsqueezyClient {
    * @returns A checkout object
    */
   public async retrieveCheckout(options: RetrieveCheckoutOptions) {
-    const { id, ...rest } = options;
-
-    return this._request<RetrieveCheckoutResult>({
-      path: `/checkouts/${id}`,
-      ...rest,
+    return retrieveCheckout({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -614,15 +505,9 @@ export class LemonsqueezyClient {
    * @returns Returns a paginated list of checkout objects ordered by `created_at` (descending)
    */
   public async listAllCheckouts(options: ListAllCheckoutsOptions = {}) {
-    const { storeId, variantId, ...rest } = options;
-
-    return this._request<ListAllCheckoutsResult>({
-      params: {
-        ...(storeId ? { store_id: storeId } : {}),
-        ...(variantId ? { variant_id: variantId } : {}),
-      },
-      path: "/checkouts",
-      ...rest,
+    return listAllCheckouts({
+      apiKey: this._apiKey,
+      ...options,
     });
   }
 
@@ -636,35 +521,7 @@ export class LemonsqueezyClient {
    * @returns A checkout object
    */
   public async createCheckout(options: CreateCheckoutOptions) {
-    const {
-      checkout_data,
-      checkout_options,
-      custom_price,
-      expires_at,
-      product_options,
-      ...rest
-    } = options;
-
-    return this._request<CreateCheckoutResult>({
-      data: {
-        ...(checkout_data ? { checkout_data } : {}),
-        ...(checkout_options ? { checkout_options } : {}),
-        ...(custom_price ? { custom_price } : {}),
-        ...(expires_at ? { expires_at } : {}),
-        ...(product_options ? { product_options } : {}),
-      },
-      path: "/checkouts",
-      method: "POST",
-      ...rest,
-    });
-  }
-
-  private async _request<
-    TResponse extends
-      | BaseLemonsqueezyResponse<any>
-      | PaginatedBaseLemonsqueezyResponse<any>
-  >(options: Omit<LemonsqueezyOptions, "apiKey">): Promise<TResponse> {
-    return requestLemonSqueeze({
+    return createCheckout({
       apiKey: this._apiKey,
       ...options,
     });

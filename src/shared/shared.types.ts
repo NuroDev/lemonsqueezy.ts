@@ -2,10 +2,12 @@ import type { RequestInit } from "undici";
 
 export interface SharedModuleOptions {
   apiKey: string;
+  page?: number;
+  include?: Array<keyof typeof LemonsqueezyDataType>;
 }
 
 export interface SharedLemonsqueezyOptions {
-  apiVersion?: `v${number}`;
+  apiVersion?: "v1";
   baseUrl?: string;
 }
 

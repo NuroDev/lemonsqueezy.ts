@@ -1,6 +1,8 @@
 import { fetch } from "undici";
 import { join } from "node:path";
 
+import { LemonsqueezyDataType } from "~/shared";
+
 import type {
   BaseLemonsqueezyResponse,
   LemonsqueezyOptions,
@@ -16,13 +18,24 @@ export async function requestLemonSqueeze<
   apiVersion = "v1",
   baseUrl = "https://api.lemonsqueezy.com",
   data,
-  params,
   headers,
+  include,
   method = "GET",
+  page,
+  params,
   path,
 }: LemonsqueezyOptions): Promise<TResponse> {
   try {
     const url = new URL(join(apiVersion, path), baseUrl);
+
+    if (include)
+      url.searchParams.append(
+        "include",
+        include.map((i) => LemonsqueezyDataType[i]).join(",")
+      );
+
+    if (page) url.searchParams.append("page", page.toString());
+
     if (params && method === "GET")
       Object.entries(params).forEach(([key, value]) =>
         url.searchParams.append(key, value)

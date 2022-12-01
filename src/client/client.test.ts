@@ -3,6 +3,7 @@ import { describe, it, expect, beforeAll } from "vitest";
 import "dotenv/config";
 
 import { LemonsqueezyClient } from "./client.class";
+import { LemonsqueezyDataType } from "~/shared";
 
 describe.concurrent("Client", () => {
   const { LEMON_SQUEEZY_API_KEY } = process.env;
@@ -145,7 +146,12 @@ describe.concurrent("Client", () => {
   });
 
   it("Get user", async () => {
-    expect(true).toEqual(true);
+    const user = await client.getUser();
+
+    expect(user).toBeDefined();
+    expect(user.data).toBeDefined();
+    expect(user.data.type).toBe(LemonsqueezyDataType.users);
+    expect(user.errors).toBeUndefined();
   });
 
   it("Retrieve variant", async () => {

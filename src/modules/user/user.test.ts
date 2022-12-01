@@ -2,7 +2,8 @@ import { describe, it, expect, beforeAll } from "vitest";
 
 import "dotenv/config";
 
-import {} from ".";
+import { getUser } from ".";
+import { LemonsqueezyDataType } from "~/shared";
 
 describe("User", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -12,6 +13,13 @@ describe("User", () => {
   });
 
   it("Get user", async () => {
-    expect(true).toEqual(true);
+    const user = await getUser({
+      apiKey,
+    });
+
+    expect(user).toBeDefined();
+    expect(user.data).toBeDefined();
+    expect(user.data.type).toBe(LemonsqueezyDataType.users);
+    expect(user.errors).toBeUndefined();
   });
 });

@@ -1,7 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import "dotenv/config";
-
 import { listAllLicenseKeys } from ".";
 
 describe.concurrent("License Key", () => {

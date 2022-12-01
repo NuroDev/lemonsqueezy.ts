@@ -13,5 +13,6 @@ export default defineConfig({
     deps: {
       inline: ["minifaker"],
     },
+    setupFiles: ["dotenv/config"],
   },
 });

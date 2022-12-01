@@ -1,7 +1,5 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import "dotenv/config";
-
 import { listAllDiscounts } from ".";
 
 describe.concurrent("Discount", () => {

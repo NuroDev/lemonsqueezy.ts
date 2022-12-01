@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { listAllOrders } from ".";
 
-describe("Order", () => {
+describe.concurrent("Order", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

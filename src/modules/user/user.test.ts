@@ -5,7 +5,7 @@ import "dotenv/config";
 import { getUser } from ".";
 import { LemonsqueezyDataType } from "~/shared";
 
-describe("User", () => {
+describe.concurrent("User", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { listAllFiles } from ".";
 
-describe("File", () => {
+describe.concurrent("File", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

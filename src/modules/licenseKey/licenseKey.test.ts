@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { listAllLicenseKeys } from ".";
 
-describe("License Key", () => {
+describe.concurrent("License Key", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

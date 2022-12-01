@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { listAllCheckouts } from ".";
 
-describe("Checkout", () => {
+describe.concurrent("Checkout", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

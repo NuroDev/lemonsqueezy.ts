@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { listAllVariants } from ".";
 
-describe("Variant", () => {
+describe.concurrent("Variant", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
 
   beforeAll(() => {

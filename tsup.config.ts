@@ -23,6 +23,13 @@ export default defineConfig([
   },
   {
     ...baseConfigOptions,
+    entryPoints: {
+      index: "src/client/index.ts",
+    },
+    outDir: "dist/client",
+  },
+  {
+    ...baseConfigOptions,
     entry: {
       index: "src/modules/index.ts",
       ...Object.fromEntries(

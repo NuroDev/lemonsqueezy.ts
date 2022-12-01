@@ -58,7 +58,7 @@ import type {
   PaginatedBaseLemonsqueezyResponse,
 } from "~/shared";
 
-export class Lemonsqueezy {
+export class LemonsqueezyClient {
   private _apiKey: string;
 
   constructor(apiKey: string) {

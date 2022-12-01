@@ -1,1 +1,1 @@
-export { Lemonsqueezy } from "./client.class";
+export { LemonsqueezyClient } from "./client.class";

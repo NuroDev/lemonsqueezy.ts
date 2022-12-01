@@ -3,9 +3,9 @@
 [![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://docs.lemonsqueezy.com/api/stores)
 
 ```typescript
-import { Lemonsqueezy } from "lemonsqueezy.ts";
+import { LemonsqueezyClient } from "lemonsqueezy.ts";
 
-const client = new Lemonsqueezy("YOUR_API_KEY");
+const client = new LemonsqueezyClient("YOUR_API_KEY");
 
 const store = await client.retrieveStore({
   id: "...",

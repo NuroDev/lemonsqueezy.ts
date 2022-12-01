@@ -1,1 +1,1 @@
-export { Lemonsqueezy } from "./client";
+export { LemonsqueezyClient } from "./client";

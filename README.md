@@ -46,9 +46,9 @@ pnpm install lemonsqueezy.ts
 Create a new client instance with your API key
 
 ```typescript
-import { Lemonsqueezy } from "lemonsqueezy.ts";
+import { LemonsqueezyClient } from "lemonsqueezy.ts";
 
-const client = new Lemonsqueezy("YOUR_API_KEY");
+const client = new LemonsqueezyClient("YOUR_API_KEY");
 
 const user = await client.getUser();
 // => { attributes: { ... }, id: "1", links: { self: "..." }, type: 'users' }

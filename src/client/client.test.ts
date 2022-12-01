@@ -2,18 +2,18 @@ import { describe, it, expect, beforeAll } from "vitest";
 
 import "dotenv/config";
 
-import { Lemonsqueezy } from "./client.class";
+import { LemonsqueezyClient } from "./client.class";
 
 describe("Client", () => {
   const { LEMON_SQUEEZY_API_KEY } = process.env;
 
-  let client: Lemonsqueezy;
+  let client: LemonsqueezyClient;
 
   beforeAll(() => {
     if (!LEMON_SQUEEZY_API_KEY)
       throw "No LEMON_SQUEEZY_API_KEY environment variable found";
 
-    client = new Lemonsqueezy(LEMON_SQUEEZY_API_KEY);
+    client = new LemonsqueezyClient(LEMON_SQUEEZY_API_KEY);
   });
 
   describe("Checkout", () => {

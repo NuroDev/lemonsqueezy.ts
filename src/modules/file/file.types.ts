@@ -63,7 +63,7 @@ export interface LemonsqueezyFile {
      */
     version: string;
   };
-  type: LemonsqueezyDataType.FILES;
+  type: LemonsqueezyDataType.files;
   id: string | number;
 }
 

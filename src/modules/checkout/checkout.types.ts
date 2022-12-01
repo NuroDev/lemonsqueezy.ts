@@ -175,7 +175,7 @@ export interface LemonsqueezyCheckout {
      */
     variant_id: number;
   };
-  type: LemonsqueezyDataType.CHECKOUTS;
+  type: LemonsqueezyDataType.checkouts;
   id: string;
 }
 

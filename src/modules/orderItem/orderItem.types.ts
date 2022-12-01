@@ -49,7 +49,7 @@ export interface LemonsqueezyOrderItem {
      */
     variant_name: string;
   };
-  type: LemonsqueezyDataType.ORDER_ITEMS;
+  type: LemonsqueezyDataType.order_items;
   id: string | number;
 }
 

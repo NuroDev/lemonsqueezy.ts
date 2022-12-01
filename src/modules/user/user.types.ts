@@ -46,7 +46,7 @@ export interface LemonsqueezyUser {
   links: {
     self: string;
   };
-  type: LemonsqueezyDataType.USERS;
+  type: LemonsqueezyDataType.users;
 }
 
 export interface GetUserOptions extends SharedLemonsqueezyOptions {}

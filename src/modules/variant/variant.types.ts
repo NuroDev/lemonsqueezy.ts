@@ -135,7 +135,7 @@ export interface LemonsqueezyVariant {
      */
     updated_at: Date;
   };
-  type: LemonsqueezyDataType.VARIANTS;
+  type: LemonsqueezyDataType.variants;
   id: string | number;
 }
 

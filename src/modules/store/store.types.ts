@@ -80,7 +80,7 @@ export interface LemonsqueezyStore {
     url: string;
   };
   id: string | number;
-  type: LemonsqueezyDataType.STORES;
+  type: LemonsqueezyDataType.stores;
 }
 
 export interface ListAllStoresOptions extends SharedLemonsqueezyOptions {}

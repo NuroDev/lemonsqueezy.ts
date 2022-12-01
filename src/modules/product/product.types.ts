@@ -87,7 +87,7 @@ export interface LemonsqueezyProduct {
      */
     updated_at: Date;
   };
-  type: LemonsqueezyDataType.PRODUCTS;
+  type: LemonsqueezyDataType.products;
   id: string | number;
 }
 

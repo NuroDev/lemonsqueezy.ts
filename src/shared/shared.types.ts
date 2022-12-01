@@ -29,18 +29,18 @@ export interface LemonsqueezyOptions
 }
 
 export enum LemonsqueezyDataType {
-  CHECKOUTS = "checkouts",
-  DISCOUNTS = "discounts",
-  FILES = "files",
-  LICENSE_KEY_INSTANCES = "license-key-instances",
-  LICENSE_KEYS = "license-keys",
-  ORDER_ITEMS = "order-items",
-  ORDERS = "orders",
-  PRODUCTS = "products",
-  STORES = "stores",
-  SUBSCRIPTIONS = "subscriptions",
-  USERS = "users",
-  VARIANTS = "variants",
+  checkouts = "checkouts",
+  discounts = "discounts",
+  files = "files",
+  license_key_instances = "license-key-instances",
+  license_keys = "license-keys",
+  order_items = "order-items",
+  orders = "orders",
+  products = "products",
+  stores = "stores",
+  subscriptions = "subscriptions",
+  users = "users",
+  variants = "variants",
 }
 
 export interface BaseLemonsqueezyResponse<

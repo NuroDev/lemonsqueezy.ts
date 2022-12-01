@@ -138,7 +138,7 @@ export interface LemonsqueezySubscription {
      */
     variant_name: string;
   };
-  type: LemonsqueezyDataType.SUBSCRIPTIONS;
+  type: LemonsqueezyDataType.subscriptions;
   id: string | number;
 }
 

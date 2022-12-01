@@ -81,7 +81,7 @@ export interface LemonsqueezyLicenseKey {
      */
     user_name: string;
   };
-  type: LemonsqueezyDataType.LICENSE_KEYS;
+  type: LemonsqueezyDataType.license_keys;
   id: string | number;
 }
 

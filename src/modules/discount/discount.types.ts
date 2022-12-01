@@ -91,7 +91,7 @@ export interface LemonsqueezyDiscount {
      */
     updated_at: Date;
   };
-  type: LemonsqueezyDataType.DISCOUNTS;
+  type: LemonsqueezyDataType.discounts;
   id: string | number;
 }
 

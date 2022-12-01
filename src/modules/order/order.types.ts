@@ -113,7 +113,7 @@ export interface LemonsqueezyOrder {
      */
     user_name: string;
   };
-  type: LemonsqueezyDataType.ORDERS;
+  type: LemonsqueezyDataType.orders;
   id: string | number;
 }
 

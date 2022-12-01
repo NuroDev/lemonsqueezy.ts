@@ -108,7 +108,7 @@ export async function updateSubscription(
           variant_id: variantId,
         },
         id,
-        type: LemonsqueezyDataType.SUBSCRIPTIONS,
+        type: LemonsqueezyDataType.subscriptions,
       },
     },
     path: `/subscriptions/${id}`,

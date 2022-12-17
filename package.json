@@ -1,6 +1,6 @@
 {
   "name": "lemonsqueezy.ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "JavaScript / TypeScript SDK for the Lemon Squeezy API",
   "repository": {
     "type": "git",

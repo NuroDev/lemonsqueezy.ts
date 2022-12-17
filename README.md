@@ -16,7 +16,7 @@
     <br />
     <br />
   
-[![Build status](https://img.shields.io/github/workflow/status/nurodev/lemonsqueezy.ts/CI?label=%20&logo=github&logoColor=white&style=for-the-badge)](https://github.com/NuroDev/lemonsqueezy.ts/actions/workflows/ci.yml)
+[![Build status](https://img.shields.io/github/actions/workflow/status/NuroDev/lemonsqueezy.ts/ci.yml?branch=main&label=%20&logo=github&logoColor=white&style=for-the-badge)](https://github.com/NuroDev/lemonsqueezy.ts/actions/workflows/ci.yml)
 [![Package version](https://img.shields.io/npm/v/lemonsqueezy.ts?label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
 [![Package monthly downloads](https://img.shields.io/npm/dm/lemonsqueezy.ts?color=blueviolet&label=%20&style=for-the-badge)](https://www.npmjs.com/package/lemonsqueezy.ts)
 [![Docs](https://img.shields.io/badge/-Docs-blue.svg?style=for-the-badge)](https://docs.lemonsqueezy.com/api)

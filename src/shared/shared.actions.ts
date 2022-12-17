@@ -55,13 +55,17 @@ export async function requestLemonSqueeze<
           }
         : {}),
     });
+    if (!response.ok)
+      throw {
+        status: response.status,
+        message: response.statusText,
+      };
 
     const json = (await response.json()) as TResponse;
     if (json.errors && json.errors.length > 0) throw json;
 
     return json;
   } catch (error) {
-    console.error(error);
     throw error;
   }
 }

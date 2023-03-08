@@ -121,11 +121,11 @@ export interface LemonsqueezyCheckout {
      * @docs https://docs.lemonsqueezy.com/help/checkout/prefilling-checkout-fields
      * @docs https://docs.lemonsqueezy.com/help/checkout/passing-custom-data
      */
-    checkout_data: LemonsqueezyCheckoutData;
+    checkout_data: Partial<LemonsqueezyCheckoutData>;
     /**
      * An object containing checkout options for this checkout
      */
-    checkout_options: LemonsqueezyCheckoutOptions;
+    checkout_options: Partial<LemonsqueezyCheckoutOptions>;
     /**
      * An ISO-8601 formatted date-time string indicating when the object was created
      *
@@ -147,7 +147,7 @@ export interface LemonsqueezyCheckout {
     /**
      * An object containing any overridden product options for this checkout
      */
-    product_options: LemonsqueezyProductOptions;
+    product_options: Partial<LemonsqueezyProductOptions>;
     /**
      * The ID of the store this checkout belongs to
      */

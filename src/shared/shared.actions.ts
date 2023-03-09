@@ -56,11 +56,20 @@ export async function requestLemonSqueeze<
           }
         : {}),
     });
-    if (!response.ok)
+    if (!response.ok) {
+      const errorsJson = (await response.json()) as {
+        errors: Array<{
+          detail: string;
+          status: number;
+          title: string;
+        }>;
+      };
       throw {
         status: response.status,
         message: response.statusText,
+        errors: errorsJson.errors,
       };
+    }
 
     const json = (await response.json()) as TResponse;
     if (json.errors && json.errors.length > 0) throw json;

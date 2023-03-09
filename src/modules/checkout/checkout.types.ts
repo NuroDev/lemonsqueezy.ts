@@ -23,11 +23,11 @@ export interface LemonsqueezyCheckoutData {
   /**
    * An object containing any custom data to be passed to the checkout
    */
-  custom: Array<any>;
+  custom?: Array<any>;
   /**
    * A pre-filled discount code
    */
-  discount_code: string;
+  discount_code?: string;
   /**
    * A pre-filled email address
    */
@@ -39,40 +39,57 @@ export interface LemonsqueezyCheckoutData {
   /**
    * A pre-filled tax number
    */
-  tax_number: string;
+  tax_number?: string;
 }
 
 export interface LemonsqueezyCheckoutOptions {
   /**
    * A custom hex color to use for the checkout button
    */
-  button_color: `#${string}`;
+  button_color?: `#${string}`;
   /**
    * If `true`, use the dark theme
    */
-  dark: boolean;
+  dark?: boolean;
   /**
    * If `false`, hide the product description
    */
-  desc: boolean;
+  desc?: boolean;
   /**
    * If `false`, hide the discount code field
    */
-  discount: boolean;
+  discount?: boolean;
   /**
    * If `true`, show the checkout overlay
    *
    * @docs https://docs.lemonsqueezy.com/help/checkout/checkout-overlay
    */
-  embed: boolean;
+  embed?: boolean;
   /**
    * If `false`, hide the store logo
    */
-  logo: boolean;
+  logo?: boolean;
   /**
    * If `false`, hide the product media
    */
-  media: boolean;
+  media?: boolean;
+}
+
+export interface LemonsqueezyCheckoutPreview {
+  currency_rate: number;
+  currency: string;
+  discount_total_formatted: string;
+  discount_total_usd: number;
+  discount_total: number;
+  subtotal_formatted: string;
+  subtotal_usd: number;
+  subtotal: number;
+  tax_formatted: string;
+  tax_usd: number;
+  tax: number;
+  total_formatted: string;
+  total_usd: number;
+  total: number;
 }
 
 export interface LemonsqueezyProductOptions {
@@ -83,11 +100,11 @@ export interface LemonsqueezyProductOptions {
   /**
    * An array of variant IDs to enable for this checkout. If this is empty, all variants will be enabled
    */
-  enabled_variants: Array<string>;
+  enabled_variants?: Array<string>;
   /**
    * An array of image URLs to use as the product's media
    */
-  media: Array<string>;
+  media?: Array<string>;
   /**
    * A custom name for the product
    */
@@ -144,6 +161,7 @@ export interface LemonsqueezyCheckout {
      * @see https://en.wikipedia.org/wiki/ISO_8601
      */
     expires_at: Date | null;
+    preview: LemonsqueezyCheckoutPreview;
     /**
      * An object containing any overridden product options for this checkout
      */
@@ -179,18 +197,80 @@ export interface LemonsqueezyCheckout {
   id: string;
 }
 
-export interface CreateCheckoutOptions
-  extends SharedLemonsqueezyOptions,
-    Partial<
-      Pick<
-        LemonsqueezyCheckout["attributes"],
-        | "custom_price"
-        | "product_options"
-        | "checkout_options"
-        | "checkout_data"
-        | "expires_at"
-      >
-    > {}
+export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
+  /**
+   * An object containing any prefill or custom data to be used in the checkout
+   *
+   * @docs https://docs.lemonsqueezy.com/help/checkout/prefilling-checkout-fields
+   * @docs https://docs.lemonsqueezy.com/help/checkout/passing-custom-data
+   */
+  checkout_data: LemonsqueezyCheckoutData;
+  /**
+   * An object containing checkout options for this checkout
+   */
+  checkout_options?: LemonsqueezyCheckoutOptions;
+  /**
+   * A positive integer in cents representing the custom price of the variant.
+   *
+   * Note: If the product purchased is a subscription, this custom price is used
+   * for all renewal payments. If the subscription's variant changes in the
+   * future (i.e. the customer is moved to a different subscription "tier") the
+   * new variant's price will be used from that moment forward.
+   */
+  custom_price: number;
+  /**
+   * An ISO-8601 formatted date-time string indicating when the checkout expires
+   *
+   * Can be `null` if the checkout is perpetual
+   *
+   * @see https://en.wikipedia.org/wiki/ISO_8601
+   */
+  expires_at?: Date | null;
+  /**
+   * A boolean indicating whether to return a preview of the checkout.
+   *
+   * If `true`, the checkout will include a `preview` object with the checkout preview data.
+   */
+  preview?: boolean;
+  /**
+   * An object containing any overridden product options for this checkout.
+   */
+  product_options: LemonsqueezyProductOptions;
+  /**
+   * The ID of the store this checkout belongs to.
+   */
+  store?: number;
+  /**
+   * The ID of the variant associated with this checkout.
+   *
+   * Note: by default, all variants of the related product will be shown in the checkout, with
+   * your selected variant highlighted. If you want hide to other variants, you can utilise
+   * the `product_options.enabled_variants` option to determine which variant(s) are
+   * displayed in the checkout.
+   */
+  variant?: number;
+}
+
+export interface CreateCheckoutBody {
+  data: {
+    type: LemonsqueezyDataType.checkouts;
+    attributes: CreateCheckoutOptions;
+    relationships?: {
+      store?: {
+        data: {
+          id: number;
+          type: LemonsqueezyDataType.stores;
+        };
+      };
+      variant?: {
+        data: {
+          id: number;
+          type: LemonsqueezyDataType.variants;
+        };
+      };
+    };
+  };
+}
 
 export type CreateCheckoutResult =
   BaseLemonsqueezyResponse<LemonsqueezyCheckout>;

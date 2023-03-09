@@ -21,7 +21,7 @@ import type { SharedModuleOptions } from "~/shared";
  * @returns A checkout object
  */
 export async function createCheckout(
-  options: CreateCheckoutOptions & SharedModuleOptions
+  options: CreateCheckoutOptions & Pick<SharedModuleOptions, "apiKey">
 ): Promise<CreateCheckoutResult> {
   const {
     checkout_data,
@@ -45,20 +45,18 @@ export async function createCheckout(
           product_options,
         },
         relationships: {
-          ...(store
-            ? {
-                store: {
-                  data: { id: store, type: LemonsqueezyDataType.stores },
-                },
-              }
-            : {}),
-          ...(variant
-            ? {
-                variant: {
-                  data: { id: variant, type: LemonsqueezyDataType.variants },
-                },
-              }
-            : {}),
+          store: {
+            data: {
+              id: store,
+              type: LemonsqueezyDataType.stores,
+            },
+          },
+          variant: {
+            data: {
+              id: variant,
+              type: LemonsqueezyDataType.variants,
+            },
+          },
         },
         type: LemonsqueezyDataType.checkouts,
       },

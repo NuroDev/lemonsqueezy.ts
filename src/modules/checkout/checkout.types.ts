@@ -239,7 +239,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
   /**
    * The ID of the store this checkout belongs to.
    */
-  store?: number;
+  store: number;
   /**
    * The ID of the variant associated with this checkout.
    *
@@ -248,21 +248,21 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
    * the `product_options.enabled_variants` option to determine which variant(s) are
    * displayed in the checkout.
    */
-  variant?: number;
+  variant: number;
 }
 
 export interface CreateCheckoutBody {
   data: {
     type: LemonsqueezyDataType.checkouts;
-    attributes: CreateCheckoutOptions;
-    relationships?: {
-      store?: {
+    attributes: Omit<CreateCheckoutOptions, "store" | "variant">;
+    relationships: {
+      store: {
         data: {
           id: number;
           type: LemonsqueezyDataType.stores;
         };
       };
-      variant?: {
+      variant: {
         data: {
           id: number;
           type: LemonsqueezyDataType.variants;

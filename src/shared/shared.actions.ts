@@ -12,7 +12,8 @@ import type {
 export async function requestLemonSqueeze<
   TResponse extends
     | BaseLemonsqueezyResponse<any>
-    | PaginatedBaseLemonsqueezyResponse<any>
+    | PaginatedBaseLemonsqueezyResponse<any>,
+  TData extends Record<string, any> = Record<string, any>
 >({
   apiKey,
   apiVersion = "v1",
@@ -24,7 +25,7 @@ export async function requestLemonSqueeze<
   page,
   params,
   path,
-}: LemonsqueezyOptions): Promise<TResponse> {
+}: LemonsqueezyOptions<TData>): Promise<TResponse> {
   try {
     const url = new URL(join(apiVersion, path), baseUrl);
 

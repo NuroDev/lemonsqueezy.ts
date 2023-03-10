@@ -1,6 +1,7 @@
-import { requestLemonSqueeze } from "~/shared";
+import { LemonsqueezyDataType, requestLemonSqueeze } from "~/shared";
 
 import type {
+  CreateCheckoutBody,
   CreateCheckoutOptions,
   CreateCheckoutResult,
   ListAllCheckoutsOptions,
@@ -20,7 +21,7 @@ import type { SharedModuleOptions } from "~/shared";
  * @returns A checkout object
  */
 export async function createCheckout(
-  options: CreateCheckoutOptions & SharedModuleOptions
+  options: CreateCheckoutOptions & Pick<SharedModuleOptions, "apiKey">
 ): Promise<CreateCheckoutResult> {
   const {
     checkout_data,
@@ -28,16 +29,37 @@ export async function createCheckout(
     custom_price,
     expires_at,
     product_options,
+    store,
+    variant,
     ...rest
   } = options;
 
-  return requestLemonSqueeze<CreateCheckoutResult>({
+  return requestLemonSqueeze<CreateCheckoutResult, CreateCheckoutBody>({
     data: {
-      ...(checkout_data ? { checkout_data } : {}),
-      ...(checkout_options ? { checkout_options } : {}),
-      ...(custom_price ? { custom_price } : {}),
-      ...(expires_at ? { expires_at } : {}),
-      ...(product_options ? { product_options } : {}),
+      data: {
+        attributes: {
+          checkout_data,
+          checkout_options,
+          custom_price,
+          expires_at,
+          product_options,
+        },
+        relationships: {
+          store: {
+            data: {
+              id: store,
+              type: LemonsqueezyDataType.stores,
+            },
+          },
+          variant: {
+            data: {
+              id: variant,
+              type: LemonsqueezyDataType.variants,
+            },
+          },
+        },
+        type: LemonsqueezyDataType.checkouts,
+      },
     },
     path: "/checkouts",
     method: "POST",

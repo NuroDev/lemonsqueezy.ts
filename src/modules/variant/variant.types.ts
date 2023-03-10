@@ -136,7 +136,7 @@ export interface LemonsqueezyVariant {
     updated_at: Date;
   };
   type: LemonsqueezyDataType.variants;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllVariantsOptions extends SharedLemonsqueezyOptions {

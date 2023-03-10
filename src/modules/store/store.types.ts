@@ -79,7 +79,7 @@ export interface LemonsqueezyStore {
      */
     url: string;
   };
-  id: string | number;
+  id: string;
   type: LemonsqueezyDataType.stores;
 }
 

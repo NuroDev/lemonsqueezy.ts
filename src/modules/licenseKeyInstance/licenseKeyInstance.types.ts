@@ -40,7 +40,7 @@ export interface LemonsqueezyLicenseKeyInstance {
     updated_at: Date;
   };
   type: LemonsqueezyDataType.license_key_instances;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllLicenseKeyInstancesOptions

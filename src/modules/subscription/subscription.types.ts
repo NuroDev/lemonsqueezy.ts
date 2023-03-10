@@ -139,7 +139,7 @@ export interface LemonsqueezySubscription {
     variant_name: string;
   };
   type: LemonsqueezyDataType.subscriptions;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllSubscriptionsOptions extends SharedLemonsqueezyOptions {

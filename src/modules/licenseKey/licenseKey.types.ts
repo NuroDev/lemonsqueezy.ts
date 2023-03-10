@@ -82,7 +82,7 @@ export interface LemonsqueezyLicenseKey {
     user_name: string;
   };
   type: LemonsqueezyDataType.license_keys;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllLicenseKeysOptions extends SharedLemonsqueezyOptions {

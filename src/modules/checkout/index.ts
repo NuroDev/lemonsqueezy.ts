@@ -13,6 +13,7 @@ export type {
   LemonsqueezyCheckout,
   LemonsqueezyCheckoutData,
   LemonsqueezyCheckoutOptions,
+  LemonsqueezyCheckoutPreview,
   LemonsqueezyProductOptions,
   ListAllCheckoutsOptions,
   ListAllCheckoutsResult,

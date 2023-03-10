@@ -12,7 +12,8 @@ import type {
 export async function requestLemonSqueeze<
   TResponse extends
     | BaseLemonsqueezyResponse<any>
-    | PaginatedBaseLemonsqueezyResponse<any>
+    | PaginatedBaseLemonsqueezyResponse<any>,
+  TData extends Record<string, any> = Record<string, any>
 >({
   apiKey,
   apiVersion = "v1",
@@ -24,7 +25,7 @@ export async function requestLemonSqueeze<
   page,
   params,
   path,
-}: LemonsqueezyOptions): Promise<TResponse> {
+}: LemonsqueezyOptions<TData>): Promise<TResponse> {
   try {
     const url = new URL(join(apiVersion, path), baseUrl);
 
@@ -51,15 +52,24 @@ export async function requestLemonSqueeze<
       method,
       ...(data && method !== "GET"
         ? {
-            body: JSON.stringify(params),
+            body: JSON.stringify(data),
           }
         : {}),
     });
-    if (!response.ok)
+    if (!response.ok) {
+      const errorsJson = (await response.json()) as {
+        errors: Array<{
+          detail: string;
+          status: number;
+          title: string;
+        }>;
+      };
       throw {
         status: response.status,
         message: response.statusText,
+        errors: errorsJson.errors,
       };
+    }
 
     const json = (await response.json()) as TResponse;
     if (json.errors && json.errors.length > 0) throw json;

@@ -11,11 +11,12 @@ export interface SharedLemonsqueezyOptions {
   baseUrl?: string;
 }
 
-export interface LemonsqueezyOptions
-  extends Omit<RequestInit, "body">,
+export interface LemonsqueezyOptions<
+  TData extends Record<string, any> = Record<string, any>
+> extends Omit<RequestInit, "body">,
     SharedLemonsqueezyOptions,
     SharedModuleOptions {
-  data?: Record<string, any>;
+  data?: TData;
   params?: Record<string, any>;
   method?:
     | "CONNECT"

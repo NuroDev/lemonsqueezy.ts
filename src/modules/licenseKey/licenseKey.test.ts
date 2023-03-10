@@ -13,7 +13,6 @@ describe.concurrent("License Key", () => {
     const licenseKeys = await listAllLicenseKeys({
       apiKey,
     });
-    console.log(licenseKeys);
     if (!licenseKeys.data.length) throw new Error("No license keys found");
 
     const licenseKey = await retrieveLicenseKey({

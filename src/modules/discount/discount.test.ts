@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllDiscounts } from ".";
+import { listAllDiscounts, retrieveDiscount } from ".";
 
 describe.concurrent("Discount", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,20 @@ describe.concurrent("Discount", () => {
   });
 
   it("Retrieve discount", async () => {
-    expect(true).toEqual(true);
+    const discounts = await listAllDiscounts({
+      apiKey,
+    });
+    if (!discounts.data.length) throw new Error("No discounts found");
+
+    const discount = await retrieveDiscount({
+      apiKey,
+      id: discounts.data.at(0)!.id,
+    });
+
+    expect(discount).toBeDefined();
+    expect(discount.data).toBeDefined();
+    expect(discount.data).not.toBeNull();
+    expect(discount.errors).toBeUndefined();
   });
 
   it("List all discounts", async () => {

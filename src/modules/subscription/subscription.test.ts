@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllSubscriptions } from ".";
+import { listAllSubscriptions, retrieveSubscription } from ".";
 
 describe.concurrent("Subscription", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,20 @@ describe.concurrent("Subscription", () => {
   });
 
   it("Retrieve subscription", async () => {
-    expect(true).toEqual(true);
+    const subscriptions = await listAllSubscriptions({
+      apiKey,
+    });
+    if (!subscriptions.data.length) throw new Error("No subscriptions found");
+
+    const subscription = await retrieveSubscription({
+      apiKey,
+      id: subscriptions.data.at(0)!.id,
+    });
+
+    expect(subscription).toBeDefined();
+    expect(subscription.data).toBeDefined();
+    expect(subscription.data).not.toBeNull();
+    expect(subscription.errors).toBeUndefined();
   });
 
   it("List all subscriptions", async () => {

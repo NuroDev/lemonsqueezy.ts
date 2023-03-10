@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllFiles } from ".";
+import { listAllFiles, retrieveFile } from ".";
 
 describe.concurrent("File", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,20 @@ describe.concurrent("File", () => {
   });
 
   it("Retrieve file", async () => {
-    expect(true).toEqual(true);
+    const files = await listAllFiles({
+      apiKey,
+    });
+    if (!files.data.length) throw new Error("No files found");
+
+    const file = await retrieveFile({
+      apiKey,
+      id: files.data.at(0)!.id,
+    });
+
+    expect(file).toBeDefined();
+    expect(file.data).toBeDefined();
+    expect(file.data).not.toBeNull();
+    expect(file.errors).toBeUndefined();
   });
 
   it("List all files", async () => {

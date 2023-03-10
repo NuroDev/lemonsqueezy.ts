@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllLicenseKeys } from ".";
+import { listAllLicenseKeys, retrieveLicenseKey } from ".";
 
 describe.concurrent("License Key", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,21 @@ describe.concurrent("License Key", () => {
   });
 
   it("Retrieve license key", async () => {
-    expect(true).toEqual(true);
+    const licenseKeys = await listAllLicenseKeys({
+      apiKey,
+    });
+    console.log(licenseKeys);
+    if (!licenseKeys.data.length) throw new Error("No license keys found");
+
+    const licenseKey = await retrieveLicenseKey({
+      apiKey,
+      id: licenseKeys.data.at(0)!.id,
+    });
+
+    expect(licenseKey).toBeDefined();
+    expect(licenseKey.data).toBeDefined();
+    expect(licenseKey.data).not.toBeNull();
+    expect(licenseKey.errors).toBeUndefined();
   });
 
   it("List all license keys", async () => {

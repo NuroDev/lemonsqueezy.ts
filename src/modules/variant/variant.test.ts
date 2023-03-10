@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllVariants } from ".";
+import { listAllVariants, retrieveVariant } from ".";
 
 describe.concurrent("Variant", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,20 @@ describe.concurrent("Variant", () => {
   });
 
   it("Retrieve variant", async () => {
-    expect(true).toEqual(true);
+    const variants = await listAllVariants({
+      apiKey,
+    });
+    if (!variants.data.length) throw new Error("No variants found");
+
+    const variant = await retrieveVariant({
+      apiKey,
+      id: variants.data.at(0)!.id,
+    });
+
+    expect(variant).toBeDefined();
+    expect(variant.data).toBeDefined();
+    expect(variant.data).not.toBeNull();
+    expect(variant.errors).toBeUndefined();
   });
 
   it("List all variants", async () => {

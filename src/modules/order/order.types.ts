@@ -114,7 +114,7 @@ export interface LemonsqueezyOrder {
     user_name: string;
   };
   type: LemonsqueezyDataType.orders;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllOrdersOptions extends SharedLemonsqueezyOptions {

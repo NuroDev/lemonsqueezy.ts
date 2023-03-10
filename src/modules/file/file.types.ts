@@ -64,7 +64,7 @@ export interface LemonsqueezyFile {
     version: string;
   };
   type: LemonsqueezyDataType.files;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllFilesOptions extends SharedLemonsqueezyOptions {

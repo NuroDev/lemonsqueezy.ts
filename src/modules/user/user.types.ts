@@ -42,7 +42,7 @@ export interface LemonsqueezyUser {
      */
     updatedAt: Date;
   };
-  id: string | number;
+  id: string;
   links: {
     self: string;
   };

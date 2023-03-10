@@ -50,7 +50,7 @@ export interface LemonsqueezyOrderItem {
     variant_name: string;
   };
   type: LemonsqueezyDataType.order_items;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllOrderItemsOptions extends SharedLemonsqueezyOptions {

@@ -88,7 +88,7 @@ export interface LemonsqueezyProduct {
     updated_at: Date;
   };
   type: LemonsqueezyDataType.products;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllProductsOptions extends SharedLemonsqueezyOptions {

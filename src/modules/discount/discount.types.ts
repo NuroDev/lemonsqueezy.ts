@@ -92,7 +92,7 @@ export interface LemonsqueezyDiscount {
     updated_at: Date;
   };
   type: LemonsqueezyDataType.discounts;
-  id: string | number;
+  id: string;
 }
 
 export interface ListAllDiscountsOptions extends SharedLemonsqueezyOptions {

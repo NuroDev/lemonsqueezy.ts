@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from "vitest";
 
-import { listAllOrderItems } from ".";
+import { listAllOrderItems, retrieveOrderItem } from ".";
 
 describe.concurrent("Order item", () => {
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY as string;
@@ -10,7 +10,20 @@ describe.concurrent("Order item", () => {
   });
 
   it("Retrieve order item", async () => {
-    expect(true).toEqual(true);
+    const orderItems = await listAllOrderItems({
+      apiKey,
+    });
+    if (!orderItems.data.length) throw new Error("No order items found");
+
+    const orderItem = await retrieveOrderItem({
+      apiKey,
+      id: orderItems.data.at(0)!.id,
+    });
+
+    expect(orderItem).toBeDefined();
+    expect(orderItem.data).toBeDefined();
+    expect(orderItem.data).not.toBeNull();
+    expect(orderItem.errors).toBeUndefined();
   });
 
   it("List all order items", async () => {

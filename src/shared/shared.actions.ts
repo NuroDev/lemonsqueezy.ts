@@ -52,7 +52,7 @@ export async function requestLemonSqueeze<
       method,
       ...(data && method !== "GET"
         ? {
-            body: JSON.stringify(params),
+            body: JSON.stringify(data),
           }
         : {}),
     });

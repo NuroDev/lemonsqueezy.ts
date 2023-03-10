@@ -258,13 +258,13 @@ export interface CreateCheckoutBody {
     relationships: {
       store: {
         data: {
-          id: number;
+          id: string;
           type: LemonsqueezyDataType.stores;
         };
       };
       variant: {
         data: {
-          id: number;
+          id: string;
           type: LemonsqueezyDataType.variants;
         };
       };

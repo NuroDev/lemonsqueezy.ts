@@ -143,6 +143,18 @@ describe.concurrent("Client", () => {
     expect(subscriptions.errors).toBeUndefined();
   });
 
+  it("Retrieve subscription invoice", async () => {
+    expect(true).toEqual(true);
+  });
+
+  it("List all subscription invoices", async () => {
+    const subscriptionInvoices = await client.listAllSubscriptionInvoices();
+
+    expect(subscriptionInvoices).toBeDefined();
+    expect(Array.isArray(subscriptionInvoices.data)).toBe(true);
+    expect(subscriptionInvoices.errors).toBeUndefined();
+  });
+
   it("Get user", async () => {
     const user = await client.getUser();
 

@@ -10,6 +10,7 @@ import {
   listAllOrders,
   listAllProducts,
   listAllStores,
+  listAllSubscriptionInvoices,
   listAllSubscriptions,
   listAllVariants,
   retrieveCheckout,
@@ -22,6 +23,7 @@ import {
   retrieveProduct,
   retrieveStore,
   retrieveSubscription,
+  retrieveSubscriptionInvoice,
   retrieveVariant,
   updateSubscription,
 } from "~/modules";
@@ -38,6 +40,7 @@ import type {
   ListAllOrdersOptions,
   ListAllProductsOptions,
   ListAllStoresOptions,
+  ListAllSubscriptionInvoicesOptions,
   ListAllSubscriptionsOptions,
   ListAllVariantsOptions,
   RetrieveCheckoutOptions,
@@ -49,6 +52,7 @@ import type {
   RetrieveOrderOptions,
   RetrieveProductOptions,
   RetrieveStoreOptions,
+  RetrieveSubscriptionInvoiceOptions,
   RetrieveSubscriptionOptions,
   RetrieveVariantOptions,
   UpdateSubscriptionOptions,
@@ -525,6 +529,46 @@ export class LemonsqueezyClient {
    */
   public async createCheckout(options: CreateCheckoutOptions) {
     return createCheckout({
+      apiKey: this._apiKey,
+      ...options,
+    });
+  }
+
+  /**
+   * Retrieve subscription invoice
+   *
+   * @description Retrieves a subscription invoice with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/subscription-invoices#retrieve-a-subscription-invoice
+   *
+   * @param {String} options.id - The ID of the subscription to retrieve
+   *
+   * @returns A subscription invoice object
+   */
+  public async retrieveSubscriptionInvoice(
+    options: RetrieveSubscriptionInvoiceOptions
+  ) {
+    return retrieveSubscriptionInvoice({
+      apiKey: this._apiKey,
+      ...options,
+    });
+  }
+
+  /**
+   * List all subscription invoices
+   *
+   * @description Returns a paginated list of subscriptions
+   *
+   * @docs https://docs.lemonsqueezy.com/api/subscription-invoices#list-all-subscription-invoices
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of subscription invoice objects.
+   */
+  public async listAllSubscriptionInvoices(
+    options: ListAllSubscriptionInvoicesOptions = {}
+  ) {
+    return listAllSubscriptionInvoices({
       apiKey: this._apiKey,
       ...options,
     });

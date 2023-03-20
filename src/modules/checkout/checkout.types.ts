@@ -204,7 +204,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
    * @docs https://docs.lemonsqueezy.com/help/checkout/prefilling-checkout-fields
    * @docs https://docs.lemonsqueezy.com/help/checkout/passing-custom-data
    */
-  checkout_data: LemonsqueezyCheckoutData;
+  checkout_data?: LemonsqueezyCheckoutData;
   /**
    * An object containing checkout options for this checkout
    */
@@ -235,7 +235,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
   /**
    * An object containing any overridden product options for this checkout.
    */
-  product_options: LemonsqueezyProductOptions;
+  product_options?: LemonsqueezyProductOptions;
   /**
    * The ID of the store this checkout belongs to.
    */

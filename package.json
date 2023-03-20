@@ -83,6 +83,10 @@
       "import": "./dist/modules/subscription.mjs",
       "require": "./dist/modules/subscription.js"
     },
+    "./subscriptionInvoice": {
+      "import": "./dist/modules/subscriptionInvoice.mjs",
+      "require": "./dist/modules/subscriptionInvoice.js"
+    },
     "./types": {
       "import": "./dist/types.mjs",
       "require": "./dist/types.js"
@@ -133,6 +137,9 @@
       ],
       "subscription": [
         "./dist/modules/subscription.d.ts"
+      ],
+      "subscriptionInvoice": [
+        "./dist/modules/subscriptionInvoice.d.ts"
       ],
       "types": [
         "./dist/types.d.ts"

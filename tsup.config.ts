@@ -44,6 +44,7 @@ export default defineConfig([
           "product",
           "store",
           "subscription",
+          "subscriptionInvoice",
           "user",
           "variant",
         ].map((module) => [module, `src/modules/${module}/index.ts`])

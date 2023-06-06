@@ -7,6 +7,7 @@ on:
 
 env:
   LEMON_SQUEEZY_API_KEY: ${{ secrets.LEMON_SQUEEZY_API_KEY }}
+  PNPM_VERSION: 8.5.1
 
 jobs:
   publish:
@@ -15,19 +16,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16.x
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v1
         with:
-          node-version: 16.x
+          node-version: 18.x
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
 
       - name: Install Dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Build
         run: yarn build:prod
 
       - name: Test
-        run: yarn test
+        run: pnpm run test
 
       - name: Publish
         uses: JS-DevTools/npm-publish@v1

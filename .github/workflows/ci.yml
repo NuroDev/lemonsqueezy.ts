@@ -10,33 +10,14 @@ on:
 
 env:
   LEMON_SQUEEZY_API_KEY: ${{ secrets.LEMON_SQUEEZY_API_KEY }}
+  PNPM_VERSION: 8.5.1
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install
-        run: yarn install
-
-      - name: Build
-        run: yarn build
-
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [18.x, 20.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -46,11 +27,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
       - name: Install
-        run: yarn install
+        run: pnpm install
 
       - name: Build
-        run: yarn build:prod
+        run: pnpm run build:prod
 
       - name: Test
-        run: yarn test
+        run: pnpm run test

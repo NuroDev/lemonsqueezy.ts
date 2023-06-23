@@ -23,7 +23,7 @@ export interface LemonsqueezyCheckoutData {
   /**
    * An object containing any custom data to be passed to the checkout
    */
-  custom?: Array<any>;
+  custom?: { [key: string]: any };
   /**
    * A pre-filled discount code
    */

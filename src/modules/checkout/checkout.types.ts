@@ -11,19 +11,19 @@ export interface LemonsqueezyBillingAddress {
    *
    * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
-  country: string;
+  country?: string;
   /**
    * A pre-filled billing address zip/postal code
    */
-  zip: string;
+  zip?: string;
 }
 
 export interface LemonsqueezyCheckoutData {
-  billing_address: LemonsqueezyBillingAddress;
+  billing_address?: LemonsqueezyBillingAddress;
   /**
    * An object containing any custom data to be passed to the checkout
    */
-  custom?: Array<any>;
+  custom?: Record<string, any>,
   /**
    * A pre-filled discount code
    */
@@ -31,11 +31,11 @@ export interface LemonsqueezyCheckoutData {
   /**
    * A pre-filled email address
    */
-  email: string;
+  email?: string;
   /**
    * A pre-filled name
    */
-  name: string;
+  name?: string;
   /**
    * A pre-filled tax number
    */
@@ -43,36 +43,40 @@ export interface LemonsqueezyCheckoutData {
 }
 
 export interface LemonsqueezyCheckoutOptions {
-  /**
-   * A custom hex color to use for the checkout button
-   */
-  button_color?: `#${string}`;
-  /**
-   * If `true`, use the dark theme
-   */
-  dark?: boolean;
-  /**
-   * If `false`, hide the product description
-   */
-  desc?: boolean;
-  /**
-   * If `false`, hide the discount code field
-   */
-  discount?: boolean;
-  /**
-   * If `true`, show the checkout overlay
-   *
-   * @docs https://docs.lemonsqueezy.com/help/checkout/checkout-overlay
-   */
-  embed?: boolean;
-  /**
-   * If `false`, hide the store logo
-   */
-  logo?: boolean;
-  /**
-   * If `false`, hide the product media
-   */
-  media?: boolean;
+	/**
+	 * A custom hex color to use for the checkout button
+	 */
+	button_color?: `#${string}`;
+	/**
+	 * If `true`, use the dark theme
+	 */
+	dark?: boolean;
+	/**
+	 * If `false`, hide the product description
+	 */
+	desc?: boolean;
+	/**
+	 * If `false`, hide the discount code field
+	 */
+	discount?: boolean;
+	/**
+	 * If `true`, show the checkout overlay
+	 *
+	 * @docs https://docs.lemonsqueezy.com/help/checkout/checkout-overlay
+	 */
+	embed?: boolean;
+	/**
+	 * If `false`, hide the store logo
+	 */
+	logo?: boolean;
+	/**
+	 * If `false`, hide the product media
+	 */
+	media?: boolean;
+	/**
+	 * If false, hide the "You will be charged..." subscription preview text
+	 */
+  subscription_preview?: boolean;
 }
 
 export interface LemonsqueezyCheckoutPreview {

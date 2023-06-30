@@ -221,7 +221,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
 	 * future (i.e. the customer is moved to a different subscription "tier") the
 	 * new variant's price will be used from that moment forward.
 	 */
-	custom_price: number;
+	custom_price?: number | null;
 	/**
 	 * An ISO-8601 formatted date-time string indicating when the checkout expires
 	 *

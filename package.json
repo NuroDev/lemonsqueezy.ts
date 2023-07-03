@@ -156,6 +156,7 @@
     "dev": "yarn build --watch",
     "build": "rimraf dist && tsup",
     "build:prod": "cross-env NODE_ENV=production yarn build",
+    "format": "prettier --write \"**/*.{js,json,ts}\"",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "test:ui": "vitest watch --ui"

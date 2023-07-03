@@ -164,6 +164,7 @@
     "undici": "^5.20.0"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/node": "^18.14.6",
     "@vitest/ui": "^0.29.2",
     "cross-env": "^7.0.3",

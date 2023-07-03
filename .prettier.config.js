@@ -4,6 +4,9 @@ module.exports = {
 	bracketSameLine: false,
 	bracketSpacing: true,
 	importOrderSeparation: true,
+	plugins: [
+		require.resolve("@trivago/prettier-plugin-sort-imports"),
+	],
 	printWidth: 100,
 	semi: true,
 	singleQuote: true,

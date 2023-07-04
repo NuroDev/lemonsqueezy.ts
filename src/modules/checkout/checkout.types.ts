@@ -11,15 +11,15 @@ export interface LemonsqueezyBillingAddress {
    *
    * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
-  country: string;
+  country?: string;
   /**
    * A pre-filled billing address zip/postal code
    */
-  zip: string;
+  zip?: string;
 }
 
 export interface LemonsqueezyCheckoutData {
-  billing_address: LemonsqueezyBillingAddress;
+  billing_address?: LemonsqueezyBillingAddress;
   /**
    * An object containing any custom data to be passed to the checkout
    */
@@ -31,11 +31,11 @@ export interface LemonsqueezyCheckoutData {
   /**
    * A pre-filled email address
    */
-  email: string;
+  email?: string;
   /**
    * A pre-filled name
    */
-  name: string;
+  name?: string;
   /**
    * A pre-filled tax number
    */
@@ -217,7 +217,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
    * future (i.e. the customer is moved to a different subscription "tier") the
    * new variant's price will be used from that moment forward.
    */
-  custom_price: number;
+  custom_price?: number;
   /**
    * An ISO-8601 formatted date-time string indicating when the checkout expires
    *

@@ -74,7 +74,7 @@ export interface LemonsqueezyCheckoutOptions {
    */
   media?: boolean;
   /**
-   * If false, hide the "You will be charged..." subscription preview text
+   * If `false`, hide the "You will be charged..." subscription preview text
    */
   subscription_preview?: boolean;
 }

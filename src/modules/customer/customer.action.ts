@@ -1,11 +1,11 @@
 import {
-	ListAllCustomersOptions,
-	ListAllCustomersResult,
-	RetrieveCustomerOptions,
-	RetrieveCustomerResult,
-} from './customer.types';
-import type { SharedModuleOptions } from '~/shared';
-import { requestLemonSqueeze } from '~/shared';
+  ListAllCustomersOptions,
+  ListAllCustomersResult,
+  RetrieveCustomerOptions,
+  RetrieveCustomerResult,
+} from "./customer.types";
+import type { SharedModuleOptions } from "~/shared";
+import { requestLemonSqueeze } from "~/shared";
 
 /**
  * List all customers
@@ -19,18 +19,18 @@ import { requestLemonSqueeze } from '~/shared';
  * @returns Returns a paginated list of customer objects ordered by `created_at` (descending)
  */
 export async function listAllCustomers(
-	options: ListAllCustomersOptions & SharedModuleOptions
+  options: ListAllCustomersOptions & SharedModuleOptions
 ): Promise<ListAllCustomersResult> {
-	const { storeId, email, ...rest } = options;
+  const { storeId, email, ...rest } = options;
 
-	return requestLemonSqueeze<ListAllCustomersResult>({
-		params: {
-			...(storeId ? { store_id: storeId } : {}),
-			...(email ? { email: email } : {}),
-		},
-		path: '/customers',
-		...rest,
-	});
+  return requestLemonSqueeze<ListAllCustomersResult>({
+    params: {
+      ...(storeId ? { store_id: storeId } : {}),
+      ...(email ? { email: email } : {}),
+    },
+    path: "/customers",
+    ...rest,
+  });
 }
 
 /**
@@ -45,12 +45,12 @@ export async function listAllCustomers(
  * @returns A customer object
  */
 export async function retrieveCustomer(
-	options: RetrieveCustomerOptions & SharedModuleOptions
+  options: RetrieveCustomerOptions & SharedModuleOptions
 ): Promise<RetrieveCustomerResult> {
-	const { id, ...rest } = options;
+  const { id, ...rest } = options;
 
-	return requestLemonSqueeze<RetrieveCustomerResult>({
-		path: `/customers/${id}`,
-		...rest,
-	});
+  return requestLemonSqueeze<RetrieveCustomerResult>({
+    path: `/customers/${id}`,
+    ...rest,
+  });
 }

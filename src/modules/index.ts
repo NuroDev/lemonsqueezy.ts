@@ -12,3 +12,4 @@ export * from "./subscription";
 export * from "./subscriptionInvoice";
 export * from "./user";
 export * from "./variant";
+export * from "./webhook";

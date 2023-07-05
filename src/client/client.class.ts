@@ -1,4 +1,5 @@
 import {
+  constructEvent,
   createCheckout,
   getUser,
   listAllCheckouts,
@@ -61,6 +62,7 @@ import type {
   RetrieveVariantOptions,
   UpdateSubscriptionOptions,
 } from "~/modules";
+import { LemonsqueezyWebhookPayload } from "~/modules/webhook/webhook.types";
 
 export class LemonsqueezyClient {
   private _apiKey: string;
@@ -612,5 +614,24 @@ export class LemonsqueezyClient {
       apiKey: this._apiKey,
       ...options,
     });
+  }
+
+  /**
+   * Construct webhook event
+   *
+   * @description Constructs an event object
+   *
+   * @param {String | Uint8Array} payload - Raw text body received from Lemonsqueezy
+   * @param {String} header - Value of the `X-Signature` header received from Lemonsqueezy
+   * @param {String} secret - Your Lemonsqueezy webhook signing secret
+   *
+   * @returns An event object
+   */
+  public constructEvent(
+    payload: LemonsqueezyWebhookPayload,
+    header: string,
+    secret: string
+  ) {
+    return constructEvent(payload, header, secret);
   }
 }

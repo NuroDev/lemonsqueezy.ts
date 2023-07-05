@@ -100,3 +100,5 @@ export type {
   RetrieveVariantOptions,
   RetrieveVariantResult,
 } from "~/modules/variant/variant.types";
+
+export type { LemonsqueezyWebhookEvent } from "~/modules/webhook/webhook.types";

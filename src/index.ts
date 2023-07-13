@@ -1,5 +1,6 @@
 export { LemonsqueezyClient } from "./client";
 export {
+  constructEvent,
   createCheckout,
   getUser,
   listAllCheckouts,

@@ -91,6 +91,10 @@ export interface LemonsqueezySubscription {
      */
     store_id: number;
     /**
+     * The ID of the customer this subscription belongs to.
+     */
+    customer_id: number;
+    /**
      * A boolean indicating if the returned subscription object was created within test mode
      */
     test_mode: boolean;

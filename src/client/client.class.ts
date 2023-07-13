@@ -2,6 +2,7 @@ import {
   createCheckout,
   getUser,
   listAllCheckouts,
+  listAllCustomers,
   listAllDiscounts,
   listAllFiles,
   listAllLicenseKeyInstances,
@@ -14,6 +15,7 @@ import {
   listAllSubscriptions,
   listAllVariants,
   retrieveCheckout,
+  retrieveCustomer,
   retrieveDiscount,
   retrieveFile,
   retrieveLicenseKey,
@@ -32,6 +34,7 @@ import type {
   CreateCheckoutOptions,
   GetUserOptions,
   ListAllCheckoutsOptions,
+  ListAllCustomersOptions,
   ListAllDiscountsOptions,
   ListAllFilesOptions,
   ListAllLicenseKeyInstancesOptions,
@@ -44,6 +47,7 @@ import type {
   ListAllSubscriptionsOptions,
   ListAllVariantsOptions,
   RetrieveCheckoutOptions,
+  RetrieveCustomerOptions,
   RetrieveDiscountOptions,
   RetrieveFileOptions,
   RetrieveLicenseKeyInstanceOptions,
@@ -569,6 +573,42 @@ export class LemonsqueezyClient {
     options: ListAllSubscriptionInvoicesOptions = {}
   ) {
     return listAllSubscriptionInvoices({
+      apiKey: this._apiKey,
+      ...options,
+    });
+  }
+
+  /**
+   * Retrieve customer
+   *
+   * @description Retrieves the customer with the given ID
+   *
+   * @docs https://docs.lemonsqueezy.com/api/customers#retrieve-a-customer
+   *
+   * @param {String} options.id - The ID of the customer to retrieve
+   *
+   * @returns A customer object
+   */
+  public async retrieveCustomer(options: RetrieveCustomerOptions) {
+    return retrieveCustomer({
+      apiKey: this._apiKey,
+      ...options,
+    });
+  }
+
+  /**
+   * List all customers
+   *
+   * @description Returns a paginated list of customers
+   *
+   * @docs https://docs.lemonsqueezy.com/api/customers#list-all-customers
+   *
+   * @param {Object} [options]
+   *
+   * @returns Returns a paginated list of customer objects ordered by `created_at` (descending)
+   */
+  public async listAllCustomers(options: ListAllCustomersOptions = {}) {
+    return listAllCustomers({
       apiKey: this._apiKey,
       ...options,
     });

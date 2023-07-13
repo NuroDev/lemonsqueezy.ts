@@ -31,6 +31,18 @@ describe.concurrent("Client", () => {
     expect(checkouts.errors).toBeUndefined();
   });
 
+  it("Retrieve customer", async () => {
+    expect(true).toEqual(true);
+  });
+
+  it("List all customers", async () => {
+    const customers = await client.listAllCustomers();
+
+    expect(customers).toBeDefined();
+    expect(Array.isArray(customers.data)).toBe(true);
+    expect(customers.errors).toBeUndefined();
+  });
+
   it("Retrieve discount", async () => {
     expect(true).toEqual(true);
   });

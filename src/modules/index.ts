@@ -1,4 +1,5 @@
 export * from "./checkout";
+export * from "./customer";
 export * from "./discount";
 export * from "./file";
 export * from "./licenseKey";

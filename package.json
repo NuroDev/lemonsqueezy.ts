@@ -39,6 +39,10 @@
       "import": "./dist/modules/checkout.mjs",
       "require": "./dist/modules/checkout.js"
     },
+    "./customer": {
+      "import": "./dist/modules/customer.mjs",
+      "require": "./dist/modules/customer.js"
+    },
     "./client": {
       "import": "./dist/client/index.mjs",
       "require": "./dist/client/index.js"
@@ -104,6 +108,9 @@
     "*": {
       "checkout": [
         "./dist/modules/checkout.d.ts"
+      ],
+      "customer": [
+        "./dist/modules/customer.d.ts"
       ],
       "client": [
         "./dist/client/index.d.ts"

@@ -11,19 +11,19 @@ export interface LemonsqueezyBillingAddress {
    *
    * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
-  country: string;
+  country?: string;
   /**
    * A pre-filled billing address zip/postal code
    */
-  zip: string;
+  zip?: string;
 }
 
 export interface LemonsqueezyCheckoutData {
-  billing_address: LemonsqueezyBillingAddress;
+  billing_address?: LemonsqueezyBillingAddress;
   /**
    * An object containing any custom data to be passed to the checkout
    */
-  custom?: Array<any>;
+  custom?: Record<string, any>;
   /**
    * A pre-filled discount code
    */
@@ -31,11 +31,11 @@ export interface LemonsqueezyCheckoutData {
   /**
    * A pre-filled email address
    */
-  email: string;
+  email?: string;
   /**
    * A pre-filled name
    */
-  name: string;
+  name?: string;
   /**
    * A pre-filled tax number
    */
@@ -73,6 +73,10 @@ export interface LemonsqueezyCheckoutOptions {
    * If `false`, hide the product media
    */
   media?: boolean;
+  /**
+   * If `false`, hide the "You will be charged..." subscription preview text
+   */
+  subscription_preview?: boolean;
 }
 
 export interface LemonsqueezyCheckoutPreview {
@@ -96,7 +100,7 @@ export interface LemonsqueezyProductOptions {
   /**
    * A custom description for the product
    */
-  description: string;
+  description?: string;
   /**
    * An array of variant IDs to enable for this checkout. If this is empty, all variants will be enabled
    */
@@ -108,23 +112,23 @@ export interface LemonsqueezyProductOptions {
   /**
    * A custom name for the product
    */
-  name: string;
+  name?: string;
   /**
    * A custom text to use for the order receipt email button
    */
-  receipt_button_text: string;
+  receipt_button_text?: string;
   /**
    * A custom URL to use for the order receipt email button
    */
-  receipt_link_url: string;
+  receipt_link_url?: string;
   /**
    * A custom thank you note to use for the order receipt email
    */
-  receipt_thank_you_note: string;
+  receipt_thank_you_note?: string;
   /**
    * A custom URL to redirect to after a successful purchase
    */
-  redirect_url: string;
+  redirect_url?: string;
 }
 
 /**
@@ -217,7 +221,7 @@ export interface CreateCheckoutOptions extends SharedLemonsqueezyOptions {
    * future (i.e. the customer is moved to a different subscription "tier") the
    * new variant's price will be used from that moment forward.
    */
-  custom_price: number;
+  custom_price?: number | null;
   /**
    * An ISO-8601 formatted date-time string indicating when the checkout expires
    *

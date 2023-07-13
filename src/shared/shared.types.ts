@@ -33,6 +33,7 @@ export interface LemonsqueezyOptions<
 
 export enum LemonsqueezyDataType {
   checkouts = "checkouts",
+  customers = "customers",
   discounts = "discounts",
   files = "files",
   license_key_instances = "license-key-instances",

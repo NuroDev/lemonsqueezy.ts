@@ -224,16 +224,12 @@ export interface UpdateSubscriptionOptions extends SharedLemonsqueezyOptions {
   /**
    * If true, any updates to the subscription will be charged immediately.
    *
-   * Required if `product_id` set
-   *
    * @docs https://docs.lemonsqueezy.com/guides/developer-guide/managing-subscriptions#handling-proration
    */
   invoiceImmediately?: boolean;
   /**
    * If true, any updates to the subscription will be charged immediately but will not be prorated. 
    * Note that this will override the invoice_immediately option if enabled.
-   *
-   * Required if `product_id` set
    *
    * @docs https://docs.lemonsqueezy.com/guides/developer-guide/managing-subscriptions#handling-proration
    */

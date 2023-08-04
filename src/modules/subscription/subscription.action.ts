@@ -94,7 +94,7 @@ export async function retrieveSubscription(
 export async function updateSubscription(
   options: UpdateSubscriptionOptions & SharedModuleOptions
 ): Promise<UpdateSubscriptionResult> {
-  const { billingAnchor, cancelled, id, pause, productId, variantId, ...rest } =
+  const { billingAnchor, cancelled, id, pause, productId, variantId, invoiceImmediately, disableProrations,  ...rest } =
     options;
 
   return requestLemonSqueeze<UpdateSubscriptionResult>({
@@ -106,6 +106,8 @@ export async function updateSubscription(
           pause,
           product_id: productId,
           variant_id: variantId,
+          invoice_immediately: invoiceImmediately,
+          disable_prorations: disableProrations
         },
         id,
         type: LemonsqueezyDataType.subscriptions,

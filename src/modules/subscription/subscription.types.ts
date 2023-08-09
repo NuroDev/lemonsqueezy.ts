@@ -77,6 +77,24 @@ export interface LemonsqueezySubscription {
      */
     renews_at: Date;
     /**
+     * Lowercase brand of the card used to pay for the latest subscription payment. One of visa, mastercard, amex, discover, jcb, diners or unionpay.
+     * Will be empty for non-card payments.
+     */
+    card_brand:
+      | ""
+      | "visa"
+      | "mastercard"
+      | "amex"
+      | "discover"
+      | "jcb"
+      | "diners"
+      | "unionpay";
+    /**
+     * The last 4 digits of the card used to pay for the latest subscription payment.
+     * Will be empty for non-card payments.
+     */
+    card_last_four: string;
+    /**
      * The formatted status of the subscription
      */
     status_formatted: string;

@@ -221,6 +221,21 @@ export interface UpdateSubscriptionOptions extends SharedLemonsqueezyOptions {
    * @docs https://docs.lemonsqueezy.com/api/variants
    */
   variantId: string;
+  /**
+   * If `true`, any updates to the subscription will be charged immediately. 
+   * A new prorated invoice will be generated and payment attempted. 
+   * Defaults to `false`. Note that this will be overridden by the `disableProrations` option if used.
+   * 
+   * @docs https://docs.lemonsqueezy.com/api/subscriptions#update-a-subscription
+   */
+  invoiceImmediately?: boolean;
+  /**
+   * If `true`, no proration will be charged and the customer will simply be charged the new price at the next renewal. 
+   * Defaults to `false`. Note that this will override the `invoiceImmediately` option if used.
+   * 
+   * @docs https://docs.lemonsqueezy.com/api/subscriptions#update-a-subscription
+   */
+  disableProrations?: boolean;
 }
 
 export type UpdateSubscriptionResult =

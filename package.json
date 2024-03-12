@@ -32,131 +32,94 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
     "./checkout": {
+      "types": "./dist/modules/checkout.d.ts",
       "import": "./dist/modules/checkout.mjs",
       "require": "./dist/modules/checkout.js"
     },
     "./customer": {
+      "types": "./dist/modules/customer.d.ts",
       "import": "./dist/modules/customer.mjs",
       "require": "./dist/modules/customer.js"
     },
     "./client": {
+      "types":"./dist/client/index.d.ts",
       "import": "./dist/client/index.mjs",
       "require": "./dist/client/index.js"
     },
     "./discount": {
+      "types": "./dist/modules/discount.d.ts",
       "import": "./dist/modules/discount.mjs",
       "require": "./dist/modules/discount.js"
     },
     "./file": {
+      "types": "./dist/modules/file.d.ts",
       "import": "./dist/modules/file.mjs",
       "require": "./dist/modules/file.js"
     },
     "./licenseKey": {
+      "types": "./dist/modules/licenseKey.d.ts",
       "import": "./dist/modules/licenseKey.mjs",
       "require": "./dist/modules/licenseKey.js"
     },
     "./licenseKeyInstance": {
+      "types": "./dist/modules/licenseKeyInstance.d.ts",
       "import": "./dist/modules/licenseKeyInstance.mjs",
       "require": "./dist/modules/licenseKeyInstance.js"
     },
     "./modules": {
+      "types": "./dist/modules/index.d.ts",
       "import": "./dist/modules/index.mjs",
       "require": "./dist/modules/index.js"
     },
     "./order": {
+      "types": "./dist/modules/order.d.ts",
       "import": "./dist/modules/order.mjs",
       "require": "./dist/modules/order.js"
     },
     "./orderItem": {
+      "types": "./dist/modules/orderItem.d.ts",
       "import": "./dist/modules/orderItem.mjs",
       "require": "./dist/modules/orderItem.js"
     },
     "./product": {
+      "types": "./dist/modules/product.d.ts",
       "import": "./dist/modules/product.mjs",
       "require": "./dist/modules/product.js"
     },
     "./store": {
+      "types": "./dist/modules/store.d.ts",
       "import": "./dist/modules/store.mjs",
       "require": "./dist/modules/store.js"
     },
     "./subscription": {
+      "types": "./dist/modules/subscription.d.ts",
       "import": "./dist/modules/subscription.mjs",
       "require": "./dist/modules/subscription.js"
     },
     "./subscriptionInvoice": {
+      "types": "./dist/modules/subscriptionInvoice.d.ts",
       "import": "./dist/modules/subscriptionInvoice.mjs",
       "require": "./dist/modules/subscriptionInvoice.js"
     },
     "./types": {
+      "types":"./dist/types.d.ts",
       "import": "./dist/types.mjs",
       "require": "./dist/types.js"
     },
     "./user": {
+      "types": "./dist/modules/user.d.ts",
       "import": "./dist/modules/user.mjs",
       "require": "./dist/modules/user.js"
     },
     "./variant": {
+      "types": "./dist/modules/variant.d.ts",
       "import": "./dist/modules/variant.mjs",
       "require": "./dist/modules/variant.js"
-    }
-  },
-  "typesVersions": {
-    "*": {
-      "checkout": [
-        "./dist/modules/checkout.d.ts"
-      ],
-      "customer": [
-        "./dist/modules/customer.d.ts"
-      ],
-      "client": [
-        "./dist/client/index.d.ts"
-      ],
-      "discount": [
-        "./dist/modules/discount.d.ts"
-      ],
-      "file": [
-        "./dist/modules/file.d.ts"
-      ],
-      "licenseKey": [
-        "./dist/modules/licenseKey.d.ts"
-      ],
-      "licenseKeyInstance": [
-        "./dist/modules/licenseKeyInstance.d.ts"
-      ],
-      "modules": [
-        "./dist/modules/index.d.ts"
-      ],
-      "order": [
-        "./dist/modules/order.d.ts"
-      ],
-      "orderItem": [
-        "./dist/modules/orderItem.d.ts"
-      ],
-      "product": [
-        "./dist/modules/product.d.ts"
-      ],
-      "store": [
-        "./dist/modules/store.d.ts"
-      ],
-      "subscription": [
-        "./dist/modules/subscription.d.ts"
-      ],
-      "subscriptionInvoice": [
-        "./dist/modules/subscriptionInvoice.d.ts"
-      ],
-      "types": [
-        "./dist/types.d.ts"
-      ],
-      "user": [
-        "./dist/modules/user.d.ts"
-      ],
-      "variant": [
-        "./dist/modules/variant.d.ts"
-      ]
     }
   },
   "scripts": {

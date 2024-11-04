@@ -1,3 +1,6 @@
+> [!WARNING]  
+> This packages has been deprecated in favor of the official [Lemon Squeezy SDK](https://github.com/lmsqueezy/lemonsqueezy.js/tree/main) JavaScript SDK. Please use `@lemonsqueezy/lemonsqueezy.js` instead.
+
 <div align="center">
   <h1>
     <br/>

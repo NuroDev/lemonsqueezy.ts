@@ -80,15 +80,15 @@ export interface LemonsqueezySubscription {
      * Lowercase brand of the card used to pay for the latest subscription payment. One of visa, mastercard, amex, discover, jcb, diners or unionpay.
      * Will be empty for non-card payments.
      */
-    card_brand:
-      | ""
-      | "visa"
-      | "mastercard"
+    card_brand: 
+      (string & {})
       | "amex"
+      | "diners"
       | "discover"
       | "jcb"
-      | "diners"
-      | "unionpay";
+      | "mastercard"
+      | "unionpay"
+      | "visa"
     /**
      * The last 4 digits of the card used to pay for the latest subscription payment.
      * Will be empty for non-card payments.
